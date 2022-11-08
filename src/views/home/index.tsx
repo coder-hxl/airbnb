@@ -23,11 +23,11 @@ const Home = memo(() => {
     <div>
       <h2>{highscore.title}</h2>
       <h3>{highscore.subtitle}</h3>
-      <ul>
+      {/* <ul>
         {highscore?.list?.map((item) => {
           return <li key={item.id}>{item.name}</li>
         })}
-      </ul>
+      </ul> */}
     </div>
   )
 })
