@@ -5,9 +5,9 @@ const LeftWrapper = styled.div`
   display: flex;
   align-items: center;
   color: ${(props) => props.theme.color.primaryColor};
-  margin-left: 24px;
 
   .logo {
+    margin-left: 24px;
     width: 102px;
     cursor: pointer;
   }
