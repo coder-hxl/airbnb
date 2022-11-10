@@ -1,9 +1,13 @@
 import React, { memo, useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
-import HomeWrapper from './style'
 import { fetchHomeDataAction } from '@/store/modules/home'
 import { RootState } from '@/store'
+
+import HomeWrapper from './style'
+import HomeBanner from './c-cpns/home-banner'
+import SectionHeader from '@/components/section-header'
+import SectionRooms from '@/components/section-rooms'
 
 const Home = memo(() => {
   const { goodPrice } = useSelector(
@@ -20,7 +24,11 @@ const Home = memo(() => {
 
   return (
     <HomeWrapper>
-      <h2>{goodPrice.title}</h2>
+      <HomeBanner />
+      <div className="goodPrice">
+        <SectionHeader title={goodPrice.title ?? ''} />
+        <SectionRooms roomList={goodPrice.list ?? []} />
+      </div>
     </HomeWrapper>
   )
 })
