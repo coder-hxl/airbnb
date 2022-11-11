@@ -26,16 +26,15 @@ const RightWrapper = styled.div`
   .profile {
     position: relative;
     margin: 0 24px 0 6px;
-    padding: 5px 0px 5px 10px;
-    width: 66px;
-    height: 30px;
+    padding: 5px 0px 5px 12px;
+    width: 78px;
+    height: 42px;
     border: 1px solid #ddd;
     border-radius: 20px;
     ${(props) => props.theme.mixin.boxShadow}
 
     .icons {
       display: flex;
-      justify-content: space-evenly;
       align-items: center;
       width: 100%;
       height: 100%;

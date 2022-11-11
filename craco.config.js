@@ -9,15 +9,19 @@ module.exports = {
       plugin: CracoLessPlugin,
       options: {
         lessLoaderOptions: {
-          lessOptions: {}
-        }
-      }
-    }
+          lessOptions: {
+            modifyVars: { '@primary-color': '#1DA57A' },
+            javascriptEnabled: true,
+          },
+        },
+      },
+    },
   ],
   webpack: {
     alias: {
       '@': resolve('src'),
-      components: resolve('src/components')
-    }
-  }
+      components: resolve('src/components'),
+      // '@mui/styled-engine': '@mui/styled-engine-sc',
+    },
+  },
 }
