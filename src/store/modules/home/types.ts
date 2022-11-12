@@ -1,17 +1,39 @@
 export interface IHomeState {
-  goodPrice: IGoodPrice
+  goodPriceInfo: IGoodPriceInfo
+  highScoreInfo: IHighScoreInfo
+  discountInfo: IDiscountInfo
 }
 
-export interface IHomeReducers {}
-
-export interface IGoodPrice {
+export interface IGoodPriceInfo {
   _id?: string
   type?: string
   title?: string
-  list?: IGoodPriceListItem[]
+  list?: IList[]
 }
 
-export interface IGoodPriceListItem {
+export interface IHighScoreInfo {
+  _id?: string
+  type?: string
+  title?: string
+  subtitle?: string
+  list?: IList[]
+}
+
+export interface IDiscountInfo {
+  _id?: string
+  type?: string
+  title?: string
+  subtitle?: string
+  dest_address?: {
+    name: string
+    homes: string[]
+  }[]
+  dest_list?: {
+    [key: string]: IList[]
+  }
+}
+
+export interface IList {
   id: string
   picture_url: string
   verify_info: {

@@ -1,5 +1,6 @@
-import { IGoodPriceListItem } from '@/store/modules/home/types'
+import { IList } from '@/store/modules/home/types'
 
 export interface IProps {
-  roomList: IGoodPriceListItem[]
+  roomList: IList[]
+  itemWidt?: string
 }
