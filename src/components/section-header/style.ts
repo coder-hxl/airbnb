@@ -6,10 +6,11 @@ const SectionHeaderWrapper = styled.div`
 
   .title {
     font-size: 23px;
+    font-weight: 600;
   }
 
   .subTitle {
-    margin-top: 14px;
+    margin-top: 6px;
     font-size: 16px;
   }
 `

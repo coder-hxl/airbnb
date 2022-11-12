@@ -6,12 +6,12 @@ import SectionRoomsWrapper from './style'
 import { IProps } from './types'
 
 const SectionRooms = memo((props: IProps) => {
-  const { roomList } = props
+  const { roomList, itemWidt = '25%' } = props
 
   return (
     <SectionRoomsWrapper>
       {roomList.slice(0, 8).map((item) => {
-        return <RoomItem key={item.id} itemData={item} />
+        return <RoomItem key={item.id} itemData={item} itemWidth={itemWidt} />
       })}
     </SectionRoomsWrapper>
   )

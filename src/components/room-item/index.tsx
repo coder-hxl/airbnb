@@ -6,14 +6,14 @@ import RoomItemWrapper from './style'
 import { IProps } from './types'
 
 const RoomItem = memo((props: IProps) => {
-  const { itemData } = props
+  const { itemData, itemWidth } = props
 
   return (
-    <RoomItemWrapper>
+    <RoomItemWrapper color={itemData.star_rating_color} itemWidth={itemWidth}>
       <div className="cover">
         <img className="picture" src={itemData.picture_url} alt="图片" />
       </div>
-      <div className="content">
+      <div className="i-content">
         <div className="desc">{itemData.verify_info.messages.join(' · ')}</div>
         <div className="name" title={itemData.name}>
           {itemData.name}
@@ -23,6 +23,7 @@ const RoomItem = memo((props: IProps) => {
           <Rating
             value={itemData.star_rating ?? 0}
             readOnly
+            precision={0.1}
             sx={{ fontSize: '13px' }}
           />
           <div className="message">

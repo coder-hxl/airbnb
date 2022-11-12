@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-const RoomItemWrapper = styled.div`
+const RoomItemWrapper: any = styled.div`
   box-sizing: border-box;
   padding: 10px 8px;
-  width: 25%;
+  width: ${(props: any) => props.itemWidth};
 
   .cover {
     position: relative;
@@ -20,7 +20,7 @@ const RoomItemWrapper = styled.div`
     }
   }
 
-  .content {
+  .i-content {
     margin-top: 10px;
 
     .desc {
@@ -51,6 +51,7 @@ const RoomItemWrapper = styled.div`
 
       .MuiRating-icon {
         margin-left: -2px;
+        color: ${(props) => props.color};
       }
 
       .message {

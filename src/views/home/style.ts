@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
 const HomeWrapper = styled.div`
-  .goodPrice {
+  .content {
     box-sizing: border-box;
     margin: 0 auto;
-    padding: 40px 24px 0;
+    padding: 0 24px;
     width: 1080px;
   }
 `
