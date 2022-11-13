@@ -1,9 +1,11 @@
 import styled from 'styled-components'
 
-const RoomItemWrapper: any = styled.div`
+import { IStyledComponent, IStyledProps } from './types'
+
+const RoomItemWrapper: IStyledComponent = styled.div`
   box-sizing: border-box;
   padding: 10px 8px;
-  width: ${(props: any) => props.itemWidth};
+  width: ${(props: IStyledProps) => props.itemWidth};
 
   .cover {
     position: relative;
@@ -48,10 +50,11 @@ const RoomItemWrapper: any = styled.div`
     .evaluate {
       display: flex;
       align-items: center;
+      padding-top: 4px;
 
       .MuiRating-icon {
         margin-left: -2px;
-        color: ${(props) => props.color};
+        color: ${(props: IStyledProps) => props.color};
       }
 
       .message {

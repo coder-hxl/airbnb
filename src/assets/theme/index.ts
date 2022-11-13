@@ -17,7 +17,7 @@ const theme = {
   },
 }
 
-type themeType = typeof theme
+type ThemeType = typeof theme
 
 export default theme
-export type { themeType }
+export type { ThemeType }

@@ -4,6 +4,7 @@ import {
   IDiscountInfo,
   IGoodPriceInfo,
   IHighScoreInfo,
+  IHotRecommendDestInfo,
 } from '@/store/modules/home/types'
 
 export function getHomeGoodPriceData() {
@@ -16,4 +17,8 @@ export function getHomeHighScoreData() {
 
 export function getDiscountData() {
   return xLRequest.get<IDiscountInfo>({ url: '/home/discount' })
+}
+
+export function getHotRecommendDestData() {
+  return xLRequest.get<IHotRecommendDestInfo>({ url: '/home/hotrecommenddest' })
 }
