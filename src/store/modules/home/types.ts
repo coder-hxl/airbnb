@@ -2,6 +2,7 @@ export interface IHomeState {
   goodPriceInfo: IGoodPriceInfo
   highScoreInfo: IHighScoreInfo
   discountInfo: IDiscountInfo
+  hotRecommendDestInfo: IHotRecommendDestInfo
 }
 
 export interface IGoodPriceInfo {
@@ -24,6 +25,19 @@ export interface IDiscountInfo {
   type?: string
   title?: string
   subtitle?: string
+  dest_address?: {
+    name: string
+    homes: string[]
+  }[]
+  dest_list?: {
+    [key: string]: IList[]
+  }
+}
+
+export interface IHotRecommendDestInfo {
+  _id?: string
+  type?: string
+  title?: string
   dest_address?: {
     name: string
     homes: string[]

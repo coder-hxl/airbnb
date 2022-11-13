@@ -1,5 +1,8 @@
-import { IDiscountInfo } from '@/store/modules/home/types'
+import {
+  IDiscountInfo,
+  IHotRecommendDestInfo,
+} from '@/store/modules/home/types'
 
 export interface IProps {
-  infoData: IDiscountInfo
+  infoData: IDiscountInfo & IHotRecommendDestInfo
 }
