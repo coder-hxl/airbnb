@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import SectionTabsWrapper from './style'
 
 import { IProps } from './types'
+import ScrollView from '@/base-ui/scroll-view'
 
 const SectionTabs = memo((props: IProps) => {
   const { tabNames, tabClickHandle } = props
@@ -17,17 +18,19 @@ const SectionTabs = memo((props: IProps) => {
 
   return (
     <SectionTabsWrapper>
-      {tabNames.map((tabName, index) => {
-        return (
-          <div
-            key={tabName}
-            className={classNames('item', { active: index === currentIndex })}
-            onClick={() => itemClickHandle(index, tabName)}
-          >
-            {tabName}
-          </div>
-        )
-      })}
+      <ScrollView>
+        {tabNames.map((tabName, index) => {
+          return (
+            <div
+              key={tabName}
+              className={classNames('item', { active: index === currentIndex })}
+              onClick={() => itemClickHandle(index, tabName)}
+            >
+              {tabName}
+            </div>
+          )
+        })}
+      </ScrollView>
     </SectionTabsWrapper>
   )
 })

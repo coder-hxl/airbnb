@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { IStyledComponent, IStyledProps } from './types'
 
 const SectionTabsWrapper: IStyledComponent = styled.div`
-  display: flex;
   margin-bottom: 16px;
 
   .item {
