@@ -9,19 +9,29 @@ import HomeWrapper from './style'
 import HomeBanner from './c-cpns/home-banner'
 import HomeSectionV1 from './c-cpns/home-section-v1'
 import HomeSectionV2 from './c-cpns/home-section-v2'
+import HomeLongFor from './c-cpns/home-long-for'
+import HomeSectionV3 from './c-cpns/home-section-v3'
 
 const Home = memo(() => {
   // 获取state
-  const { goodPriceInfo, highScoreInfo, discountInfo, hotRecommendDestInfo } =
-    useSelector(
-      (state: RootState) => ({
-        goodPriceInfo: state.home.goodPriceInfo,
-        highScoreInfo: state.home.highScoreInfo,
-        discountInfo: state.home.discountInfo,
-        hotRecommendDestInfo: state.home.hotRecommendDestInfo,
-      }),
-      shallowEqual
-    )
+  const {
+    goodPriceInfo,
+    highScoreInfo,
+    discountInfo,
+    hotRecommendDestInfo,
+    longForInfo,
+    plusInfo,
+  } = useSelector(
+    (state: RootState) => ({
+      goodPriceInfo: state.home.goodPriceInfo,
+      highScoreInfo: state.home.highScoreInfo,
+      discountInfo: state.home.discountInfo,
+      hotRecommendDestInfo: state.home.hotRecommendDestInfo,
+      longForInfo: state.home.longForInfo,
+      plusInfo: state.home.plusInfo,
+    }),
+    shallowEqual
+  )
 
   // 派发action
   const dispatch = useDispatch<any>()
@@ -37,9 +47,10 @@ const Home = memo(() => {
           <HomeSectionV2 infoData={hotRecommendDestInfo} />
         )}
         {isEmptyO(discountInfo) && <HomeSectionV2 infoData={discountInfo} />}
-
+        {isEmptyO(longForInfo) && <HomeLongFor infoData={longForInfo} />}
         {isEmptyO(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo} />}
         {isEmptyO(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} />}
+        {isEmptyO(plusInfo) && <HomeSectionV3 infoData={plusInfo} />}
       </div>
     </HomeWrapper>
   )

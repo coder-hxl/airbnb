@@ -5,9 +5,20 @@ import {
   getHomeGoodPriceData,
   getHomeHighScoreData,
   getHotRecommendDestData,
+  getLongForData,
+  getPlusData,
 } from '@/services'
 
-import { IHomeState } from './types'
+import {
+  IAction,
+  IHomeState,
+  IDiscountInfo,
+  IGoodPriceInfo,
+  IHighScoreInfo,
+  IHotRecommendDestInfo,
+  ILongForInfo,
+  IPlusInfo,
+} from './types'
 
 export const fetchHomeDataAction = createAsyncThunk(
   'fetchData',
@@ -27,6 +38,14 @@ export const fetchHomeDataAction = createAsyncThunk(
     getHotRecommendDestData().then((res) => {
       dispatch(changeHotRecommendDestAction(res))
     })
+
+    getLongForData().then((res) => {
+      dispatch(changeLongForAction(res))
+    })
+
+    getPlusData().then((res) => {
+      dispatch(changePlusAction(res))
+    })
   }
 )
 
@@ -35,23 +54,34 @@ const initialState: IHomeState = {
   highScoreInfo: {},
   discountInfo: {},
   hotRecommendDestInfo: {},
+  longForInfo: {},
+  plusInfo: {},
 }
 
 const homeSlice = createSlice({
   name: 'home',
   initialState,
   reducers: {
-    changeGoodPriceInfoAction(state, { payload }) {
+    changeGoodPriceInfoAction(state, { payload }: IAction<IGoodPriceInfo>) {
       state.goodPriceInfo = payload
     },
-    changeHighScoreInfoAction(state, { payload }) {
+    changeHighScoreInfoAction(state, { payload }: IAction<IHighScoreInfo>) {
       state.highScoreInfo = payload
     },
-    changeDiscountInfoAction(state, { payload }) {
+    changeDiscountInfoAction(state, { payload }: IAction<IDiscountInfo>) {
       state.discountInfo = payload
     },
-    changeHotRecommendDestAction(state, { payload }) {
+    changeHotRecommendDestAction(
+      state,
+      { payload }: IAction<IHotRecommendDestInfo>
+    ) {
       state.hotRecommendDestInfo = payload
+    },
+    changeLongForAction(state, { payload }: IAction<ILongForInfo>) {
+      state.longForInfo = payload
+    },
+    changePlusAction(state, { payload }: IAction<IPlusInfo>) {
+      state.plusInfo = payload
     },
   },
 })
@@ -61,6 +91,8 @@ export const {
   changeHighScoreInfoAction,
   changeDiscountInfoAction,
   changeHotRecommendDestAction,
+  changeLongForAction,
+  changePlusAction,
 } = homeSlice.actions
 
 export default homeSlice.reducer

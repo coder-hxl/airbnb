@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { IStyledComponent, IStyledProps } from './types'
 
 const RoomItemWrapper: IStyledComponent = styled.div`
+  flex-shrink: 0;
   box-sizing: border-box;
   padding: 10px 8px;
   width: ${(props: IStyledProps) => props.itemWidth};
