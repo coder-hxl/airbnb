@@ -3,6 +3,13 @@ export interface IHomeState {
   highScoreInfo: IHighScoreInfo
   discountInfo: IDiscountInfo
   hotRecommendDestInfo: IHotRecommendDestInfo
+  longForInfo: ILongForInfo
+  plusInfo: IPlusInfo
+}
+
+export interface IAction<T> {
+  type?: string
+  payload: T
 }
 
 export interface IGoodPriceInfo {
@@ -45,6 +52,27 @@ export interface IHotRecommendDestInfo {
   dest_list?: {
     [key: string]: IList[]
   }
+}
+
+export interface ILongForInfo {
+  _id?: string
+  title?: string
+  subtitle?: string
+  type?: string
+  list?: {
+    city: string
+    price: string
+    picture_url: string
+    image_url: string
+  }[]
+}
+
+export interface IPlusInfo {
+  _id?: string
+  type?: string
+  title?: string
+  subtitle?: string
+  list?: IList[]
 }
 
 export interface IList {
