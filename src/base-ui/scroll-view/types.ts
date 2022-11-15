@@ -2,7 +2,11 @@ import { IDivStyledComponent, IDivStyledProps } from '@/types/styled-component'
 
 export interface IProps {
   children?: JSX.Element[]
+  showShade?: boolean
 }
 
-export type IStyledComponent = IDivStyledComponent<{}>
-export type IStyledProps = IDivStyledProps<{}>
+interface StyledComponentProps {
+  showShade: boolean
+}
+export type IStyledComponent = IDivStyledComponent<StyledComponentProps>
+export type IStyledProps = IDivStyledProps<StyledComponentProps>

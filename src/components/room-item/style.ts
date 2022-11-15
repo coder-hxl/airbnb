@@ -10,7 +10,7 @@ const RoomItemWrapper: IStyledComponent = styled.div`
 
   .cover {
     position: relative;
-    padding-top: 200px;
+    padding-top: 60%;
     border-radius: 3px;
     overflow: hidden;
 

@@ -19,7 +19,7 @@ const HomeSectionV3 = memo((props: IProps) => {
       />
 
       <div className="plus-list">
-        <ScrollView>
+        <ScrollView showShade={false}>
           {infoData.list?.map((item) => {
             return <RoomItem key={item.id} itemData={item} itemWidth="20%" />
           })}

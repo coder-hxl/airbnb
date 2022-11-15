@@ -7,7 +7,7 @@ import IconArrowRight from '@/assets/svg/icon-arrow-right'
 import { IProps } from './types'
 
 const ScrollView = memo((props: IProps) => {
-  const { children } = props
+  const { children, showShade = true } = props
 
   const [showLeft, setShowLeft] = useState(false)
   const [showRight, setShowRight] = useState(false)
@@ -42,7 +42,7 @@ const ScrollView = memo((props: IProps) => {
   }
 
   return (
-    <ScrollViewWrapper>
+    <ScrollViewWrapper showShade={showShade}>
       {showLeft && (
         <div className="controller-box left">
           <div className="btn" onClick={() => controllerScroll(false)}>
