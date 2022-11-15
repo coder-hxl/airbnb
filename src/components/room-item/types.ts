@@ -1,8 +1,9 @@
-import { IList } from '@/store/modules/home/types'
+import { IRoomDetail } from '@/store/modules/home/types'
+import { IRoomDetail as IRoomDetailV2 } from '@/store/modules/entire/types'
 import { IDivStyledComponent, IDivStyledProps } from '@/types/styled-component'
 
 export interface IProps {
-  itemData: IList
+  itemData: IRoomDetail | IRoomDetailV2
   itemWidth: string
 }
 

@@ -16,7 +16,7 @@ export interface IGoodPriceInfo {
   _id?: string
   type?: string
   title?: string
-  list?: IList[]
+  list?: IRoomDetail[]
 }
 
 export interface IHighScoreInfo {
@@ -24,7 +24,7 @@ export interface IHighScoreInfo {
   type?: string
   title?: string
   subtitle?: string
-  list?: IList[]
+  list?: IRoomDetail[]
 }
 
 export interface IDiscountInfo {
@@ -37,7 +37,7 @@ export interface IDiscountInfo {
     homes: string[]
   }[]
   dest_list?: {
-    [key: string]: IList[]
+    [key: string]: IRoomDetail[]
   }
 }
 
@@ -50,7 +50,7 @@ export interface IHotRecommendDestInfo {
     homes: string[]
   }[]
   dest_list?: {
-    [key: string]: IList[]
+    [key: string]: IRoomDetail[]
   }
 }
 
@@ -72,10 +72,10 @@ export interface IPlusInfo {
   type?: string
   title?: string
   subtitle?: string
-  list?: IList[]
+  list?: IRoomDetail[]
 }
 
-export interface IList {
+export interface IRoomDetail {
   id: string
   picture_url: string
   verify_info: {
