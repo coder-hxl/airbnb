@@ -7,10 +7,11 @@ import EntireRoomsWrapper from './style'
 import RoomItem from '@/components/room-item'
 
 const EntireRooms = memo(() => {
-  const { roomList, totalCount } = useSelector(
+  const { roomList, totalCount, isLoading } = useSelector(
     (state: RootState) => ({
       roomList: state.entire.roomList,
       totalCount: state.entire.totalCount,
+      isLoading: state.entire.isLoading,
     }),
     shallowEqual
   )
@@ -23,6 +24,8 @@ const EntireRooms = memo(() => {
           return <RoomItem key={item._id} itemData={item} itemWidth="20%" />
         })}
       </div>
+
+      {isLoading && <div className="shade"></div>}
     </EntireRoomsWrapper>
   )
 })

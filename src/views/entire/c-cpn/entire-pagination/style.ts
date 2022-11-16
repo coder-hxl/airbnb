@@ -13,6 +13,8 @@ const EntirePaginactionWrapper = styled.div`
   }
 
   .MuiPaginationItem-page {
+    margin: 0 8px;
+    padding: 4px 0 0 2px;
     :hover {
       text-decoration: underline;
     }

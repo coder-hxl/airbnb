@@ -20,6 +20,72 @@ const RoomItemWrapper: IStyledComponent = styled.div`
       left: 0;
       width: 100%;
       height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .slider {
+    position: relative;
+
+    &:hover {
+      .controller {
+        display: flex;
+      }
+    }
+
+    .controller {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      display: none;
+      justify-content: space-between;
+      z-index: 9;
+
+      .btn {
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        height: 100%;
+        color: #ffffff;
+      }
+
+      .left {
+        background: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.25) 0,
+          rgba(0, 0, 0, 0.1) 80%,
+          rgba(0, 0, 0, 0)
+        );
+      }
+
+      .right {
+        background: linear-gradient(
+          to left,
+          rgba(0, 0, 0, 0.25) 0,
+          rgba(0, 0, 0, 0.1) 80%,
+          rgba(0, 0, 0, 0)
+        );
+      }
+    }
+
+    .indicator {
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30%;
+      z-index: 9;
+
+      .item {
+        flex-shrink: 0;
+        margin: 0 2px;
+          /* width: 8px;
+          height: 8px; */
+        border-radius: 50%;
+        background-color: #ffffff;
+      }
     }
   }
 

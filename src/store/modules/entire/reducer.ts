@@ -6,6 +6,7 @@ const initialState: IEntireState = {
   roomList: [],
   totalCount: 0,
   currentPage: 0,
+  isLoading: false,
 }
 
 function reducer(state = initialState, action: IAction): IEntireState {
@@ -18,6 +19,9 @@ function reducer(state = initialState, action: IAction): IEntireState {
 
     case types.CHANGE_CURRENT_PAGE:
       return { ...state, currentPage: action.currentPage ?? 0 }
+
+    case types.CHANGE_IS_LOADING:
+      return { ...state, isLoading: action.isLoading ?? false }
 
     default:
       return state

@@ -1,7 +1,11 @@
 import React, { memo } from 'react'
 import styleStrToObject from './utils'
 
-const IconArrowLeft = memo(() => {
+import { IProps } from './types'
+
+const IconArrowLeft = memo((props: IProps) => {
+  const { width = 12, height = 12 } = props
+
   return (
     <svg
       viewBox="0 0 18 18"
@@ -10,7 +14,7 @@ const IconArrowLeft = memo(() => {
       aria-label="previous"
       focusable="false"
       style={styleStrToObject(
-        'height: 12px; width: 12px; display: block; fill: currentcolor;'
+        `height: ${height}; width: ${width}; display: block; fill: currentcolor;`
       )}
     >
       <path
