@@ -2,16 +2,21 @@ export interface IEntireState {
   roomList: IRoomDetail[]
   totalCount: number
   currentPage: number
+  isLoading: boolean
 }
 
+export type IActionTypes =
+  | 'entire/change_room_list'
+  | 'entire/change_total_count'
+  | 'entire/change_current_page'
+  | 'entire/change_is_loading'
+
 export interface IAction {
-  type:
-    | 'entire/change_room_list'
-    | 'entire/change_total_count'
-    | 'entire/change_current_page'
+  type: IActionTypes
   roomList?: IRoomDetail[]
   totalCount?: number
   currentPage?: number
+  isLoading?: boolean
 }
 
 export interface IRoomData {
