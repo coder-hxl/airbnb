@@ -13,6 +13,7 @@ const RoomItemWrapper: IStyledComponent = styled.div`
     padding-top: 60%;
     border-radius: 3px;
     overflow: hidden;
+    cursor: pointer;
 
     .picture {
       position: absolute;
@@ -26,6 +27,7 @@ const RoomItemWrapper: IStyledComponent = styled.div`
 
   .slider {
     position: relative;
+    cursor: pointer;
 
     &:hover {
       .controller {
@@ -80,11 +82,23 @@ const RoomItemWrapper: IStyledComponent = styled.div`
 
       .item {
         flex-shrink: 0;
-        margin: 0 2px;
-          /* width: 8px;
-          height: 8px; */
-        border-radius: 50%;
-        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 14.28%;
+
+        .dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.8);
+
+          &.active {
+            width: 9px;
+            height: 9px;
+            background-color: #ffffff;
+          }
+        }
       }
     }
   }

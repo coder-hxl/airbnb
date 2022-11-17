@@ -9,8 +9,8 @@ import {
   getPlusData,
 } from '@/services'
 
+import { IAction } from '@/store/types'
 import {
-  IAction,
   IHomeState,
   IDiscountInfo,
   IGoodPriceInfo,

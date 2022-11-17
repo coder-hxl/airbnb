@@ -9,14 +9,19 @@ import IconArrowRight from '@/assets/svg/icon-arrow-right'
 import Indicator from '@/base-ui/indicator'
 
 import type { IProps } from './types'
+import classNames from 'classnames'
 
 const RoomItem = memo((props: IProps) => {
-  const { itemData, itemWidth } = props
+  const { itemData, itemWidth, itemClick } = props
 
   const [selectIndex, setSelectIndex] = useState(0)
   const carouselRef = useRef<CarouselRef>({} as CarouselRef)
 
-  function controlClickHandle(isNext = true) {
+  function controlClickHandle(
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    isNext = true
+  ) {
+    event.stopPropagation()
     isNext ? carouselRef.current.next() : carouselRef.current.prev()
 
     const length = itemData.picture_urls?.length
@@ -28,44 +33,68 @@ const RoomItem = memo((props: IProps) => {
     }
   }
 
-  return (
-    <RoomItemWrapper color={itemData.star_rating_color} itemWidth={itemWidth}>
-      {/* <div className="cover">
-        <img className="picture" src={itemData.picture_url} alt="" />
-      </div> */}
+  function ItemClickHandle() {
+    if (itemClick) itemClick()
+  }
 
-      <div className="slider">
-        <div className="controller">
-          <div className="btn left" onClick={(e) => controlClickHandle(false)}>
-            <IconArrowLeft width="26px" height="26px" />
-          </div>
-          <div className="btn right" onClick={(e) => controlClickHandle()}>
-            <IconArrowRight width="26px" height="26px" />
-          </div>
+  const pictureEl = (
+    <div className="cover">
+      <img className="picture" src={itemData.picture_url} alt="" />
+    </div>
+  )
+
+  const sliderEl = (
+    <div className="slider">
+      <div className="controller">
+        <div
+          className="btn left"
+          onClick={(event) => controlClickHandle(event, false)}
+        >
+          <IconArrowLeft width="26px" height="26px" />
         </div>
-
-        <div className="indicator">
-          <Indicator selectIndex={selectIndex}>
-            {itemData.picture_urls?.slice(0, 8).map((item, index) => {
-              return (
-                <div key={item} className="item">
-                  {index}
-                </div>
-              )
-            })}
-          </Indicator>
+        <div
+          className="btn right"
+          onClick={(event) => controlClickHandle(event)}
+        >
+          <IconArrowRight width="26px" height="26px" />
         </div>
+      </div>
 
-        <Carousel ref={carouselRef} dots={false}>
-          {itemData.picture_urls?.map((item) => {
+      <div className="indicator">
+        <Indicator selectIndex={selectIndex}>
+          {itemData.picture_urls?.map((item, index) => {
             return (
-              <div key={item} className="cover">
-                <img className="picture" src={item} alt="" />
+              <div key={item} className={classNames('item')}>
+                <div
+                  className={classNames('dot', {
+                    active: selectIndex === index,
+                  })}
+                ></div>
               </div>
             )
           })}
-        </Carousel>
+        </Indicator>
       </div>
+
+      <Carousel ref={carouselRef} dots={false}>
+        {itemData.picture_urls?.map((item) => {
+          return (
+            <div key={item} className="cover">
+              <img className="picture" src={item} alt="" />
+            </div>
+          )
+        })}
+      </Carousel>
+    </div>
+  )
+
+  return (
+    <RoomItemWrapper
+      color={itemData.star_rating_color}
+      itemWidth={itemWidth}
+      onClick={ItemClickHandle}
+    >
+      {!itemData.picture_urls ? pictureEl : sliderEl}
 
       <div className="i-content">
         <div className="desc">{itemData.verify_info.messages.join(' · ')}</div>

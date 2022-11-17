@@ -4,8 +4,9 @@ const IndicatorWrapper = styled.div`
   position: relative;
   overflow: hidden;
 
-  .i-content {
+  .in-content {
     display: flex;
+    transition: transform 300ms ease;
   }
 `
 

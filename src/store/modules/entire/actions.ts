@@ -4,9 +4,9 @@ import * as types from './constants'
 import { getEntireRoomList } from '@/services/modules/entire'
 
 import { RootState } from '../../'
-import { IAction, IRoomDetail } from './types'
+import { IAction, IEntireRoomDetail } from './types'
 
-export function changeRoomListAction(roomList: IRoomDetail[]): IAction {
+export function changeRoomListAction(roomList: IEntireRoomDetail[]): IAction {
   return { type: types.CHANGE_ROOM_LIST, roomList }
 }
 
