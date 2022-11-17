@@ -7,16 +7,11 @@ export interface IHomeState {
   plusInfo: IPlusInfo
 }
 
-export interface IAction<T> {
-  type?: string
-  payload: T
-}
-
 export interface IGoodPriceInfo {
   _id?: string
   type?: string
   title?: string
-  list?: IRoomDetail[]
+  list?: IHomeRoomDetail[]
 }
 
 export interface IHighScoreInfo {
@@ -24,7 +19,7 @@ export interface IHighScoreInfo {
   type?: string
   title?: string
   subtitle?: string
-  list?: IRoomDetail[]
+  list?: IHomeRoomDetail[]
 }
 
 export interface IDiscountInfo {
@@ -37,7 +32,7 @@ export interface IDiscountInfo {
     homes: string[]
   }[]
   dest_list?: {
-    [key: string]: IRoomDetail[]
+    [key: string]: IHomeRoomDetail[]
   }
 }
 
@@ -50,7 +45,7 @@ export interface IHotRecommendDestInfo {
     homes: string[]
   }[]
   dest_list?: {
-    [key: string]: IRoomDetail[]
+    [key: string]: IHomeRoomDetail[]
   }
 }
 
@@ -72,10 +67,10 @@ export interface IPlusInfo {
   type?: string
   title?: string
   subtitle?: string
-  list?: IRoomDetail[]
+  list?: IHomeRoomDetail[]
 }
 
-export interface IRoomDetail {
+export interface IHomeRoomDetail {
   id: string
   picture_url: string
   verify_info: {

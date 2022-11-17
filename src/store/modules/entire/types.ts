@@ -1,5 +1,5 @@
 export interface IEntireState {
-  roomList: IRoomDetail[]
+  roomList: IEntireRoomDetail[]
   totalCount: number
   currentPage: number
   isLoading: boolean
@@ -13,19 +13,19 @@ export type IActionTypes =
 
 export interface IAction {
   type: IActionTypes
-  roomList?: IRoomDetail[]
+  roomList?: IEntireRoomDetail[]
   totalCount?: number
   currentPage?: number
   isLoading?: boolean
 }
 
 export interface IRoomData {
-  list: IRoomDetail[]
+  list: IEntireRoomDetail[]
   errcode: number
   totalCount: number
 }
 
-export interface IRoomDetail {
+export interface IEntireRoomDetail {
   _id: string
   id: string
   picture_url: string

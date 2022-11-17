@@ -1,10 +1,9 @@
-// import { IRoomDetail } from '@/store/modules/home/types'
-// import { IRoomDetail as IRoomDetailV2 } from '@/store/modules/entire/types'
 import { IDivStyledComponent, IDivStyledProps } from '@/types/styled-component'
 
 export interface IProps {
   itemData: IItemData
   itemWidth: string
+  itemClick?: Function
 }
 
 interface IItemData {
