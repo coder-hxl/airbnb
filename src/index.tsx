@@ -15,14 +15,14 @@ import '@/assets/css/index.less'
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   // <React.StrictMode>
-  <Suspense fallback="Loading...">
-    <BrowserRouter>
-      <Provider store={store}>
+  <Provider store={store}>
+    <Suspense fallback="Loading...">
+      <BrowserRouter>
         <ThemeProvider theme={theme}>
           <App />
         </ThemeProvider>
-      </Provider>
-    </BrowserRouter>
-  </Suspense>
+      </BrowserRouter>
+    </Suspense>
+  </Provider>
   // </React.StrictMode>
 )

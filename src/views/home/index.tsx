@@ -3,6 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 import { RootState } from '@/store'
 import { fetchHomeDataAction } from '@/store/modules/home'
+import { changeHeaderConfigAction } from '@/store/modules/main'
 import { isEmptyO } from '@/utils'
 
 import HomeWrapper from './style'
@@ -37,6 +38,7 @@ const Home = memo(() => {
   const dispatch = useDispatch<any>()
   useEffect(() => {
     dispatch(fetchHomeDataAction())
+    dispatch(changeHeaderConfigAction({ isFixed: true }))
   }, [dispatch])
 
   return (

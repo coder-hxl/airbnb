@@ -14,6 +14,7 @@ specifiers:
   '@types/node': ^18.11.9
   '@types/react': ^18.0.25
   '@types/react-dom': ^18.0.8
+  '@types/react-transition-group': ^4.4.5
   '@types/styled-components': ^5.1.26
   airbnb: 'link:'
   antd: ^4.24.1
@@ -26,6 +27,7 @@ specifiers:
   react-redux: ^8.0.5
   react-router-dom: ^6.4.3
   react-scripts: 5.0.1
+  react-transition-group: ^4.4.5
   styled-components: ^5.3.6
   typescript: 4.9.1-beta
   web-vitals: ^2.1.4
@@ -46,6 +48,7 @@ dependencies:
   react-redux: 8.0.5_gqczyrwmhlwpr6z64d3xh3wv54
   react-router-dom: 6.4.3_biqbaboplfbrettd7655fr4n2y
   react-scripts: 5.0.1_5lqgxuhx4fzswh6amz3kkds53m
+  react-transition-group: 4.4.5_biqbaboplfbrettd7655fr4n2y
   styled-components: 5.3.6_biqbaboplfbrettd7655fr4n2y
   web-vitals: 2.1.4
 
@@ -58,6 +61,7 @@ devDependencies:
   '@types/node': 18.11.9
   '@types/react': 18.0.25
   '@types/react-dom': 18.0.8
+  '@types/react-transition-group': 4.4.5
   '@types/styled-components': 5.1.26
   craco-less: 2.0.0_re6josazyxuhl5pbhcltu2777u
   typescript: 4.9.1-beta
@@ -2737,7 +2741,6 @@ packages:
     resolution: {integrity: sha512-juKD/eiSM3/xZYzjuzH6ZwpP+/lejltmiS3QEzV/vmb/Q8+HfDmxu+Baga8UEMGBqV88Nbg4l2hY/K2DkyaLLA==}
     dependencies:
       '@types/react': 18.0.25
-    dev: false
 
   /@types/react/18.0.25:
     resolution: {integrity: sha512-xD6c0KDT4m7n9uD4ZHi02lzskaiqcBxf4zi+tXZY98a04wvc0hi/TcCPC2FOESZi51Nd7tlUeOJY8RofL799/g==}

@@ -51,7 +51,7 @@ const RightWrapper = styled.div`
       color: ${(props) => props.theme.text.secondaryColor};
       background-color: #fff;
       box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
-      z-index: 998;
+      z-index: 99;
 
       .partition {
         margin: 8px 0;
