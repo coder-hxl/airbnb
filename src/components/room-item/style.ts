@@ -43,7 +43,7 @@ const RoomItemWrapper: IStyledComponent = styled.div`
       left: 0;
       display: none;
       justify-content: space-between;
-      z-index: 9;
+      z-index: 1;
 
       .btn {
         display: flex;
@@ -78,7 +78,7 @@ const RoomItemWrapper: IStyledComponent = styled.div`
       left: 50%;
       transform: translateX(-50%);
       width: 30%;
-      z-index: 9;
+      z-index: 1;
 
       .item {
         flex-shrink: 0;
