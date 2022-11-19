@@ -5,7 +5,8 @@ import { IHeaderConfig, IMainState } from './types'
 
 const initialState: IMainState = {
   headerConfig: {
-    isFixed: true,
+    isFixed: false,
+    topAlpha: false,
   },
 }
 

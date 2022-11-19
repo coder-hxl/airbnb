@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { IRightStyleProps } from './types'
 
 const RightWrapper = styled.div`
   flex: 1;
@@ -9,7 +10,8 @@ const RightWrapper = styled.div`
   .btns {
     display: flex;
     align-items: center;
-    color: ${(props) => props.theme.text.secondaryColor};
+    color: ${(props: IRightStyleProps) =>
+      props.theme.isAlpha ? '#fff' : props.theme.text.secondaryColor};
 
     .btn {
       padding: 12px;
@@ -18,7 +20,8 @@ const RightWrapper = styled.div`
       cursor: pointer;
 
       &:hover {
-        background-color: #f5f5f5;
+        background-color: ${(props: IRightStyleProps) =>
+          props.theme.isAlpha ? 'rgba(255,255,255,0.2)' : '#f5f5f5'};
       }
     }
   }
@@ -32,6 +35,8 @@ const RightWrapper = styled.div`
     border: 1px solid #ddd;
     border-radius: 20px;
     ${(props) => props.theme.mixin.boxShadow}
+    background-color: ${(props: IRightStyleProps) =>
+      props.theme.isAlpha ? '#fff' : ' '};
 
     .icons {
       display: flex;
@@ -48,7 +53,7 @@ const RightWrapper = styled.div`
       padding: 10px 0;
       width: 240px;
       border-radius: 6px;
-      color: ${(props) => props.theme.text.secondaryColor};
+      color: ${(props: IRightStyleProps) => props.theme.text.secondaryColor};
       background-color: #fff;
       box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
       z-index: 99;

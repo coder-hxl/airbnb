@@ -14,7 +14,7 @@ const Entire = memo(() => {
 
   useEffect(() => {
     dispatch(fetchRoomDataAction())
-    dispatch(changeHeaderConfigAction({ isFixed: true }))
+    dispatch(changeHeaderConfigAction({ isFixed: true, topAlpha: false }))
   }, [dispatch])
 
   return (

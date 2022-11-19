@@ -8,7 +8,7 @@ export type IDivStyledComponent<P extends Object> = StyledComponent<
   P
 >
 
-export type IDivStyledProps<P> = ThemedStyledProps<
+export type IDivStyledProps<P, T = {}> = ThemedStyledProps<
   P &
     Pick<
       React.DetailedHTMLProps<
@@ -17,5 +17,5 @@ export type IDivStyledProps<P> = ThemedStyledProps<
       >,
       'key' | keyof React.HTMLAttributes<HTMLDivElement>
     >,
-  ThemeType
+  ThemeType & T
 >
