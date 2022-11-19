@@ -4,4 +4,5 @@ export interface IMainState {
 
 export interface IHeaderConfig {
   isFixed: boolean
+  topAlpha: boolean
 }
