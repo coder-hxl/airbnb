@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, Suspense } from 'react'
 import { useRoutes } from 'react-router-dom'
 import AppFooter from './components/app-footer'
 
@@ -14,7 +14,9 @@ const App = memo(() => {
   return (
     <div className="App">
       <AppHeader />
-      <div className="content">{useRoutes(routes)}</div>
+      <Suspense fallback="Loading...">
+        <div className="content">{useRoutes(routes)}</div>
+      </Suspense>
       <AppFooter />
     </div>
   )
