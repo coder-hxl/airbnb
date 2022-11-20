@@ -16,12 +16,14 @@ const HeaderWrapper: IStyledComponent = styled.div`
   }
 
   .content {
+    position: relative;
     border-bottom: ${(props: IStyledProps) =>
       props.theme.isAlpha ? 'none' : '1px solid #eee'};
     background: ${(props: IStyledProps) =>
       props.theme.isAlpha
         ? 'linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0))'
         : '#fff'};
+    z-index: 99;
 
     .top {
       display: flex;
@@ -37,7 +39,7 @@ const HeaderWrapper: IStyledComponent = styled.div`
     bottom: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.3);
-    z-index: -1;
+    z-index: 19;
   }
 `
 
