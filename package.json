@@ -8,7 +8,6 @@
     "@mui/material": "^5.10.13",
     "@mui/styled-engine-sc": "^5.10.6",
     "@reduxjs/toolkit": "^1.9.0",
-    "airbnb": "link:",
     "antd": "^4.24.1",
     "axios": "^1.1.3",
     "classnames": "^2.3.2",
