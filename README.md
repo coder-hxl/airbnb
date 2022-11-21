@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+# Airbnb
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 关于
 
-## Available Scripts
+Airbnb —— 基于 React、TS、RTK 等技术开发。
 
-In the project directory, you can run:
+## 技术栈
 
-### `npm start`
+* 开发工具: Visual Studio Code
+* 编程语言: TypeScript 4
+* 构建工具: Create React App
+* 前端框架: React 18
+* 路由工具: React Router Dom
+* 状态管理: Redux Tookit
+* UI 框架:  Ant Design / Material UI
+* CSS 预编译: Less
+* HTTP 工具: Axios
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+更多请查看 package.json 文件
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 功能
 
-### `npm test`
+### 通用组件
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+可在其他项目使用
 
-### `npm run build`
+目录: src/base-ui
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### ScrollView组件
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+该组件时一个滚动组件，用于需要横向滚动内容，并且左右侧控件在有可以的滚动内容才会显示。(目前在 Home 页面使用)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Indicator组件
 
-### `npm run eject`
+该组件是一个轮播图的指示器组件，其特点在当 items 超出容器时，在滚动时，多出的 item 会一直在容器中间滚动，开头 item 和结尾 item 不受影响。(目前在 Entre 页面使用)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### PictureBorwser组件
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+该组件是一个图片预览器，使用 Indicator 组件当底部的预览图。(目前在 Detail 页面使用)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 组件
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### Header组件
 
-## Learn More
+该组件中间的搜索框包含两种动画，展示效果由 src/store/main 下的 State 属性决定, 可设置 fixed 和 alpha 属性。(目前在 Home / Entire / Detail 页面使用)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
