@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react'
+import { throttle } from 'underscore'
 
 export default function useScrollPosition() {
   const [scrollX, setScrollX] = useState(0)
   const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
-    function scrollHandle() {
+    const scrollHandle = throttle(() => {
       setScrollX(window.scrollX)
       setScrollY(window.scrollY)
-    }
+    }, 100)
 
     window.addEventListener('scroll', scrollHandle)
 
