@@ -36,7 +36,7 @@ Airbnb —— 基于 React、TS、RTK 等技术开发。
 
 #### PictureBorwser组件
 
-该组件是一个图片预览器，使用 Indicator 组件当底部的预览图。(目前在 Detail 页面使用)
+该组件是一个图片浏览器，使用 Indicator 组件当底部的预览器。(目前在 Detail 页面使用)
 
 ### 组件
 
