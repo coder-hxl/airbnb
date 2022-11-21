@@ -2,6 +2,7 @@ import React, { memo, useRef, useState } from 'react'
 import { Rating } from '@mui/material'
 import { Carousel } from 'antd'
 import type { CarouselRef } from 'antd/lib/carousel'
+import classNames from 'classnames'
 
 import RoomItemWrapper from './style'
 import IconArrowLeft from '@/assets/svg/icon-arrow-left'
@@ -9,7 +10,6 @@ import IconArrowRight from '@/assets/svg/icon-arrow-right'
 import Indicator from '@/base-ui/indicator'
 
 import type { IProps } from './types'
-import classNames from 'classnames'
 
 const RoomItem = memo((props: IProps) => {
   const { itemData, itemWidth, itemClick } = props
