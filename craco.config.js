@@ -4,6 +4,9 @@ const CracoLessPlugin = require('craco-less')
 const resolve = (patname) => path.resolve(__dirname, patname)
 
 module.exports = {
+  devServer: {
+    port: 3001,
+  },
   plugins: [
     {
       plugin: CracoLessPlugin,
