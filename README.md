@@ -19,7 +19,7 @@ Airbnb —— 基于 React、TS、RTK 等技术开发。
 
 <u>**详情请查看 package.json 文件**</u>
 
-## 说明
+## 核心概念
 
 ### 基本
 
