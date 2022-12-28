@@ -109,9 +109,11 @@ Airbnb —— 基于 React、TS、RTK 等技术开发。
 
 <u>**详情请查看 src/views**</u>
 
+## 后端
 
+Airbnb-API Github 地址: https://github.com/coder-hxl/airbnb-api
 
-
+Airbnb-API Gitee 地址: https://gitee.com/coderhxl/airbnb-api
 
 
 
