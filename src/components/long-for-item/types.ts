@@ -1,8 +1,8 @@
 export interface IProps {
   itemData: {
+    id: number
     city: string
     price: string
-    picture_url: string
-    image_url: string
+    pictureUrl: string
   }
 }

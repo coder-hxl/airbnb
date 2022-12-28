@@ -1,5 +1,11 @@
-import { IPlusInfo } from '@/store/modules/home/types'
+import { IHomeRoom } from '@/store/modules/home/types'
+
+interface IInfoData {
+  title?: string
+  subtitle?: string
+  list?: IHomeRoom[]
+}
 
 export interface IProps {
-  infoData: IPlusInfo
+  infoData: IInfoData
 }

@@ -1,10 +1,45 @@
 export interface IHomeState {
   goodPriceInfo: IGoodPriceInfo
   highScoreInfo: IHighScoreInfo
-  discountInfo: IDiscountInfo
-  hotRecommendDestInfo: IHotRecommendDestInfo
+  hotPlaceInfo: IHomeArea
+  wonderfulPlaceInfo: IHomeArea
   longForInfo: ILongForInfo
   plusInfo: IPlusInfo
+}
+
+export interface IHomeRoom {
+  id: number
+  name: string
+  type: string
+  price: number
+  coverUrl: string
+  starRating: number | null
+  reviewsCount: number
+  bedTypes: string[]
+  scoreDesc: string | null
+}
+
+export interface IHomeArea {
+  title?: string
+  subtitle?: string | null
+  list?: {
+    id: number
+    name: string
+    extPath: string
+    deep: number
+    rooms: IHomeRoom[]
+  }[]
+}
+
+export interface ILongForInfo {
+  title?: string
+  subtitle?: string
+  list?: {
+    id: number
+    city: string
+    price: string
+    pictureUrl: string
+  }[]
 }
 
 export interface IGoodPriceInfo {
@@ -20,46 +55,6 @@ export interface IHighScoreInfo {
   title?: string
   subtitle?: string
   list?: IHomeRoomDetail[]
-}
-
-export interface IDiscountInfo {
-  _id?: string
-  type?: string
-  title?: string
-  subtitle?: string
-  dest_address?: {
-    name: string
-    homes: string[]
-  }[]
-  dest_list?: {
-    [key: string]: IHomeRoomDetail[]
-  }
-}
-
-export interface IHotRecommendDestInfo {
-  _id?: string
-  type?: string
-  title?: string
-  dest_address?: {
-    name: string
-    homes: string[]
-  }[]
-  dest_list?: {
-    [key: string]: IHomeRoomDetail[]
-  }
-}
-
-export interface ILongForInfo {
-  _id?: string
-  title?: string
-  subtitle?: string
-  type?: string
-  list?: {
-    city: string
-    price: string
-    picture_url: string
-    image_url: string
-  }[]
 }
 
 export interface IPlusInfo {

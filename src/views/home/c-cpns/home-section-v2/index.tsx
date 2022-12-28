@@ -11,12 +11,11 @@ import { IProps } from './types'
 const HomeSectionV2 = memo((props: IProps) => {
   const { infoData } = props
 
-  const initalName = Object.keys(infoData.dest_list ?? {})[0]
-  const [name, setName] = useState(initalName)
-  const tabNames = infoData.dest_address?.map((item) => item.name)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const tabNames = infoData?.list?.map((area) => area.name) ?? []
 
-  const tabClickHandle = useCallback((tabName: string) => {
-    setName(tabName)
+  const tabClickHandle = useCallback((index: number) => {
+    setActiveIndex(index)
   }, [])
 
   return (
@@ -25,12 +24,12 @@ const HomeSectionV2 = memo((props: IProps) => {
         title={infoData.title ?? ''}
         subTitle={infoData.subtitle}
       />
-      <SectionTabs tabNames={tabNames ?? []} tabClickHandle={tabClickHandle} />
+      <SectionTabs tabNames={tabNames} tabClickHandle={tabClickHandle} />
       <SectionRooms
-        roomList={infoData.dest_list?.[name] ?? []}
+        roomList={infoData.list?.[activeIndex].rooms ?? []}
         itemWidt="33.333%"
       />
-      <SectionFooter name={name} />
+      <SectionFooter name={tabNames[activeIndex]} />
     </HomeSectionV2Wrapper>
   )
 })

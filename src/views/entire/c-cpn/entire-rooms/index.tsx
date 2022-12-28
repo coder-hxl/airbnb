@@ -31,7 +31,7 @@ const EntireRooms = memo(() => {
     <EntireRoomsWrapper>
       <h2 className="title">{totalCount}多处住宿</h2>
       <div className="room-list">
-        {roomList.map((item) => {
+        {/* {roomList.map((item) => {
           return (
             <RoomItem
               key={item._id}
@@ -40,7 +40,7 @@ const EntireRooms = memo(() => {
               itemClick={() => itemClick(item)}
             />
           )
-        })}
+        })} */}
       </div>
 
       {isLoading && <div className="shade"></div>}

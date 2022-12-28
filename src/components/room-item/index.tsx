@@ -39,7 +39,7 @@ const RoomItem = memo((props: IProps) => {
 
   const pictureEl = (
     <div className="cover">
-      <img className="picture" src={itemData.picture_url} alt="" />
+      <img className="picture" src={itemData.coverUrl} alt="" />
     </div>
   )
 
@@ -90,28 +90,30 @@ const RoomItem = memo((props: IProps) => {
 
   return (
     <RoomItemWrapper
-      color={itemData.star_rating_color}
+      color="#008489"
       itemWidth={itemWidth}
       onClick={ItemClickHandle}
     >
       {!itemData.picture_urls ? pictureEl : sliderEl}
 
       <div className="i-content">
-        <div className="desc">{itemData.verify_info.messages.join(' · ')}</div>
+        <div className="type">
+          {[itemData.type, ...itemData.bedTypes].join(' · ')}
+        </div>
         <div className="name" title={itemData.name}>
           {itemData.name}
         </div>
         <div className="price">¥{itemData.price}/晚</div>
         <div className="evaluate">
           <Rating
-            value={itemData.star_rating ?? 0}
+            value={itemData.starRating ?? 0}
             readOnly
             precision={0.1}
             sx={{ fontSize: '13px' }}
           />
           <div className="message">
-            {itemData.reviews_count}
-            {itemData.bottom_info && ' · ' + itemData.bottom_info?.content}
+            {itemData.reviewsCount}
+            {itemData.scoreDesc && ' · ' + itemData.scoreDesc}
           </div>
         </div>
       </div>

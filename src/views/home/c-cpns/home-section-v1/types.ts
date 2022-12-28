@@ -1,5 +1,11 @@
-import { IGoodPriceInfo, IHighScoreInfo } from '@/store/modules/home/types'
+import { IHomeRoom } from '@/store/modules/home/types'
+
+interface IInofData {
+  title?: string
+  subtitle?: string | null
+  list: IHomeRoom[]
+}
 
 export interface IProps {
-  infoData: IGoodPriceInfo & IHighScoreInfo
+  infoData: IInofData
 }

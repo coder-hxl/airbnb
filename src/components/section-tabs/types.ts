@@ -2,7 +2,7 @@ import { IDivStyledComponent, IDivStyledProps } from '@/types/styled-component'
 
 export interface IProps {
   tabNames: string[]
-  tabClickHandle: (tabName: string) => any
+  tabClickHandle: (index: number) => any
 }
 
 export type IStyledComponent = IDivStyledComponent<{}>

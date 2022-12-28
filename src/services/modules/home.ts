@@ -1,10 +1,9 @@
 import xLRequest from '..'
 
 import {
-  IDiscountInfo,
   IGoodPriceInfo,
   IHighScoreInfo,
-  IHotRecommendDestInfo,
+  IHomeArea,
   ILongForInfo,
   IPlusInfo,
 } from '@/store/modules/home/types'
@@ -17,12 +16,12 @@ export function getHomeHighScoreData() {
   return xLRequest.get<IHighScoreInfo>({ url: '/home/highscore' })
 }
 
-export function getDiscountData() {
-  return xLRequest.get<IDiscountInfo>({ url: '/home/discount' })
+export function getHotPlaceData() {
+  return xLRequest.get<IHomeArea>({ url: '/home/hotplace' })
 }
 
-export function getHotRecommendDestData() {
-  return xLRequest.get<IHotRecommendDestInfo>({ url: '/home/hotrecommenddest' })
+export function getWonderfulPlaceData() {
+  return xLRequest.get<IHomeArea>({ url: '/home/wonderfulplace' })
 }
 
 export function getLongForData() {

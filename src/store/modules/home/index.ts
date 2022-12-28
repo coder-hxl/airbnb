@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import {
-  getDiscountData,
+  getHotPlaceData,
   getHomeGoodPriceData,
   getHomeHighScoreData,
-  getHotRecommendDestData,
+  getWonderfulPlaceData,
   getLongForData,
   getPlusData,
 } from '@/services'
@@ -12,48 +12,47 @@ import {
 import { IAction } from '@/store/types'
 import {
   IHomeState,
-  IDiscountInfo,
   IGoodPriceInfo,
   IHighScoreInfo,
-  IHotRecommendDestInfo,
   ILongForInfo,
   IPlusInfo,
+  IHomeArea,
 } from './types'
 
 export const fetchHomeDataAction = createAsyncThunk(
   'fetchData',
   (state, { dispatch }) => {
-    getHomeGoodPriceData().then((res) => {
-      dispatch(changeGoodPriceInfoAction(res))
+    // getHomeGoodPriceData().then((res) => {
+    //   dispatch(changeGoodPriceInfoAction(res))
+    // })
+
+    // getHomeHighScoreData().then((res) => {
+    //   dispatch(changeHighScoreInfoAction(res))
+    // })
+
+    getHotPlaceData().then((res) => {
+      dispatch(changeHotPlaceInfoAction(res))
     })
 
-    getHomeHighScoreData().then((res) => {
-      dispatch(changeHighScoreInfoAction(res))
-    })
-
-    getDiscountData().then((res) => {
-      dispatch(changeDiscountInfoAction(res))
-    })
-
-    getHotRecommendDestData().then((res) => {
-      dispatch(changeHotRecommendDestAction(res))
+    getWonderfulPlaceData().then((res) => {
+      dispatch(changeWonderfulPlaceAction(res))
     })
 
     getLongForData().then((res) => {
       dispatch(changeLongForAction(res))
     })
 
-    getPlusData().then((res) => {
-      dispatch(changePlusAction(res))
-    })
+    // getPlusData().then((res) => {
+    //   dispatch(changePlusAction(res))
+    // })
   }
 )
 
 const initialState: IHomeState = {
   goodPriceInfo: {},
   highScoreInfo: {},
-  discountInfo: {},
-  hotRecommendDestInfo: {},
+  hotPlaceInfo: {},
+  wonderfulPlaceInfo: {},
   longForInfo: {},
   plusInfo: {},
 }
@@ -68,14 +67,11 @@ const homeSlice = createSlice({
     changeHighScoreInfoAction(state, { payload }: IAction<IHighScoreInfo>) {
       state.highScoreInfo = payload
     },
-    changeDiscountInfoAction(state, { payload }: IAction<IDiscountInfo>) {
-      state.discountInfo = payload
+    changeHotPlaceInfoAction(state, { payload }: IAction<IHomeArea>) {
+      state.hotPlaceInfo = payload
     },
-    changeHotRecommendDestAction(
-      state,
-      { payload }: IAction<IHotRecommendDestInfo>
-    ) {
-      state.hotRecommendDestInfo = payload
+    changeWonderfulPlaceAction(state, { payload }: IAction<IHomeArea>) {
+      state.wonderfulPlaceInfo = payload
     },
     changeLongForAction(state, { payload }: IAction<ILongForInfo>) {
       state.longForInfo = payload
@@ -89,8 +85,8 @@ const homeSlice = createSlice({
 export const {
   changeGoodPriceInfoAction,
   changeHighScoreInfoAction,
-  changeDiscountInfoAction,
-  changeHotRecommendDestAction,
+  changeHotPlaceInfoAction,
+  changeWonderfulPlaceAction,
   changeLongForAction,
   changePlusAction,
 } = homeSlice.actions

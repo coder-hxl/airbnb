@@ -8,26 +8,26 @@ import { isEmptyO } from '@/utils'
 
 import HomeWrapper from './style'
 import HomeBanner from './c-cpns/home-banner'
-import HomeSectionV1 from './c-cpns/home-section-v1'
+// import HomeSectionV1 from './c-cpns/home-section-v1'
 import HomeSectionV2 from './c-cpns/home-section-v2'
 import HomeLongFor from './c-cpns/home-long-for'
-import HomeSectionV3 from './c-cpns/home-section-v3'
+// import HomeSectionV3 from './c-cpns/home-section-v3'
 
 const Home = memo(() => {
   // 获取state
   const {
     goodPriceInfo,
     highScoreInfo,
-    discountInfo,
-    hotRecommendDestInfo,
+    hotPlaceInfo,
+    wonderfulPlaceInfo,
     longForInfo,
     plusInfo,
   } = useSelector(
     (state: RootState) => ({
       goodPriceInfo: state.home.goodPriceInfo,
       highScoreInfo: state.home.highScoreInfo,
-      discountInfo: state.home.discountInfo,
-      hotRecommendDestInfo: state.home.hotRecommendDestInfo,
+      hotPlaceInfo: state.home.hotPlaceInfo,
+      wonderfulPlaceInfo: state.home.wonderfulPlaceInfo,
       longForInfo: state.home.longForInfo,
       plusInfo: state.home.plusInfo,
     }),
@@ -45,14 +45,14 @@ const Home = memo(() => {
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
-        {isEmptyO(hotRecommendDestInfo) && (
-          <HomeSectionV2 infoData={hotRecommendDestInfo} />
+        {isEmptyO(wonderfulPlaceInfo) && (
+          <HomeSectionV2 infoData={wonderfulPlaceInfo} />
         )}
-        {isEmptyO(discountInfo) && <HomeSectionV2 infoData={discountInfo} />}
+        {isEmptyO(hotPlaceInfo) && <HomeSectionV2 infoData={hotPlaceInfo} />}
         {isEmptyO(longForInfo) && <HomeLongFor infoData={longForInfo} />}
-        {isEmptyO(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo} />}
-        {isEmptyO(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} />}
-        {isEmptyO(plusInfo) && <HomeSectionV3 infoData={plusInfo} />}
+        {/* {isEmptyO(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo} />} */}
+        {/* {isEmptyO(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} />} */}
+        {/* {isEmptyO(plusInfo) && <HomeSectionV3 infoData={plusInfo} />} */}
       </div>
     </HomeWrapper>
   )

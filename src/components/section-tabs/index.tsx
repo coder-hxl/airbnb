@@ -9,11 +9,11 @@ import ScrollView from '@/base-ui/scroll-view'
 const SectionTabs = memo((props: IProps) => {
   const { tabNames, tabClickHandle } = props
 
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [activeIndex, setActiveIndex] = useState(0)
 
-  function itemClickHandle(index: number, tabName: string) {
-    setCurrentIndex(index)
-    tabClickHandle(tabName)
+  function itemClickHandle(index: number) {
+    setActiveIndex(index)
+    tabClickHandle(index)
   }
 
   return (
@@ -23,8 +23,8 @@ const SectionTabs = memo((props: IProps) => {
           return (
             <div
               key={tabName}
-              className={classNames('item', { active: index === currentIndex })}
-              onClick={() => itemClickHandle(index, tabName)}
+              className={classNames('item', { active: index === activeIndex })}
+              onClick={() => itemClickHandle(index)}
             >
               {tabName}
             </div>

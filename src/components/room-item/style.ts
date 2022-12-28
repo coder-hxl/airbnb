@@ -106,7 +106,7 @@ const RoomItemWrapper: IStyledComponent = styled.div`
   .i-content {
     margin-top: 10px;
 
-    .desc {
+    .type {
       font-size: 12px;
       font-weight: 600;
     }

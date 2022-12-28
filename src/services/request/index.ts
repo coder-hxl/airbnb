@@ -9,7 +9,13 @@ class XLRequest {
     this.instance = axios.create({ baseURL, timeout })
 
     this.instance.interceptors.response.use((res) => {
-      return res.data
+      const { code, data } = res.data
+
+      if (code === 404) {
+        return console.log(code)
+      }
+
+      return data
     })
   }
 

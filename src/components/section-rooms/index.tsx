@@ -10,7 +10,7 @@ const SectionRooms = memo((props: IProps) => {
 
   return (
     <SectionRoomsWrapper>
-      {roomList.slice(0, 8).map((item) => {
+      {roomList.map((item) => {
         return <RoomItem key={item.id} itemData={item} itemWidth={itemWidt} />
       })}
     </SectionRoomsWrapper>

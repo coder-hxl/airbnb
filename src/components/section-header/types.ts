@@ -1,4 +1,4 @@
 export interface IProps {
   title: string
-  subTitle?: string
+  subTitle?: string | null
 }

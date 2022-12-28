@@ -1,6 +1,6 @@
-import { IHomeRoomDetail } from '@/store/modules/home/types'
+import { IHomeRoom } from '@/store/modules/home/types'
 
 export interface IProps {
-  roomList: IHomeRoomDetail[]
+  roomList: IHomeRoom[]
   itemWidt?: string
 }

@@ -10,7 +10,7 @@ const LongForItem = memo((props: IProps) => {
   return (
     <LongForItemWrapper>
       <div className="inner">
-        <img className="cover" src={itemData.picture_url} alt="" />
+        <img className="cover" src={itemData.pictureUrl} alt="" />
         <div className="cover-shade"></div>
         <div className="info">
           <div className="city">{itemData.city}</div>
