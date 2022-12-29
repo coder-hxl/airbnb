@@ -37,7 +37,7 @@ Airbnb —— 基于 React、TS、RTK 等技术开发。
 
 #### Indicator组件
 
-该组件是一个轮播图的指示器组件，其特点在当 items 超出容器时，在滚动时，多出的 item 会一直在容器中间滚动，开头 item 和结尾 item 不受影响。(目前在 Entire 页面使用)
+该组件是一个轮播图的指示器组件，其特点在当 items 超出容器时，在滚动时，多出的 item 会一直在容器中间滚动，开头 item 和结尾 item 不受影响。(目前在 Area 页面使用)
 
 #### PictureBorwser组件
 
@@ -49,11 +49,11 @@ Airbnb —— 基于 React、TS、RTK 等技术开发。
 
 #### Header组件
 
-该组件中间的搜索框包含两种动画，展示效果由 Store 的 Main State 属性决定, 可设置 fixed 和 alpha 属性。(目前在 Home / Entire / Detail 页面使用)
+该组件中间的搜索框包含两种动画，展示效果由 Store 的 Main State 属性决定, 可设置 fixed 和 alpha 属性。(目前在 Home / Area / Detail 页面使用)
 
 #### RoomItem组件
 
-该组件用作展示一个房间，会根据图片数量是否展示轮播效果，并使用 Indicator 组件当指示器。(目前在 Home / Entire 页面使用)
+该组件用作展示一个房间，会根据图片数量是否展示轮播效果，并使用 Indicator 组件当指示器。(目前在 Home / Area 页面使用)
 
 <u>**更多组件请查看 src/components**</u>
 
@@ -61,7 +61,7 @@ Airbnb —— 基于 React、TS、RTK 等技术开发。
 
 头部: 使用 Header 组件。
 
-内容: 通过 Router 展示 Home / Entire / Detail 组件。
+内容: 通过 Router 展示 Home / Area / Detail 组件。
 
 底部: 使用 Footer 组件。
 
@@ -83,9 +83,9 @@ Airbnb —— 基于 React、TS、RTK 等技术开发。
   
   5. 房间区域组件：使用 ScrollView 组件对 RoomItem 组件进行展示。
 
-#### Entire
+#### Area
 
-* 数据来源：派发 Action (根据 offset 和 size 发起网络请求将 Entire 数据存入 Store 的 Entire State 中)，并从 Store 的 Entire State 获取数据。
+* 数据来源：派发 Action (根据 offset 和 size 发起网络请求将 Area 数据存入 Store 的 Area State 中)，并从 Store 的 Area State 获取数据。
 
 * 修改 Header 组件方式：派发 Action 将 Store 的 Main State 的 fixed 设置为 true，alpha 设置为 false。
 
@@ -109,12 +109,15 @@ Airbnb —— 基于 React、TS、RTK 等技术开发。
 
 <u>**详情请查看 src/views**</u>
 
+## API 文档
+
+API 文档: https://documenter.getpostman.com/view/19782726/2s8Z6yWsaF
+
 ## 后端
 
 Airbnb-API Github 地址: https://github.com/coder-hxl/airbnb-api
 
 Airbnb-API Gitee 地址: https://gitee.com/coderhxl/airbnb-api
-
 
 
 
