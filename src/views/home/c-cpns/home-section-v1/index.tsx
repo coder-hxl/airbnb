@@ -16,8 +16,8 @@ const HomeSectionV1 = memo((props: IProps) => {
         title={infoData.title ?? ''}
         subTitle={infoData.subtitle}
       />
-      <SectionRooms roomList={infoData.list ?? []} />
-      <SectionFooter />
+      <SectionRooms roomList={infoData.areaRoom?.rooms ?? []} />
+      <SectionFooter areaName={infoData.areaRoom?.name ?? ''} />
     </HomeSectionV1Wrapper>
   )
 })

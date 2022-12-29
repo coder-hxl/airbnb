@@ -2,33 +2,26 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import {
   getHotPlaceData,
-  getHomeGoodPriceData,
   getHomeHighScoreData,
+  getHomeGoodPriceData,
   getWonderfulPlaceData,
   getLongForData,
   getPlusData,
 } from '@/services'
 
 import { IAction } from '@/store/types'
-import {
-  IHomeState,
-  IGoodPriceInfo,
-  IHighScoreInfo,
-  ILongForInfo,
-  IPlusInfo,
-  IHomeArea,
-} from './types'
+import { IHomeState, IHomeAreaV2, ILongForInfo, IHomeAreaV1 } from './types'
 
 export const fetchHomeDataAction = createAsyncThunk(
   'fetchData',
   (state, { dispatch }) => {
-    // getHomeGoodPriceData().then((res) => {
-    //   dispatch(changeGoodPriceInfoAction(res))
-    // })
+    getHomeGoodPriceData().then((res) => {
+      dispatch(changeGoodPriceInfoAction(res))
+    })
 
-    // getHomeHighScoreData().then((res) => {
-    //   dispatch(changeHighScoreInfoAction(res))
-    // })
+    getHomeHighScoreData().then((res) => {
+      dispatch(changeHighScoreInfoAction(res))
+    })
 
     getHotPlaceData().then((res) => {
       dispatch(changeHotPlaceInfoAction(res))
@@ -42,9 +35,9 @@ export const fetchHomeDataAction = createAsyncThunk(
       dispatch(changeLongForAction(res))
     })
 
-    // getPlusData().then((res) => {
-    //   dispatch(changePlusAction(res))
-    // })
+    getPlusData().then((res) => {
+      dispatch(changePlusAction(res))
+    })
   }
 )
 
@@ -61,22 +54,22 @@ const homeSlice = createSlice({
   name: 'home',
   initialState,
   reducers: {
-    changeGoodPriceInfoAction(state, { payload }: IAction<IGoodPriceInfo>) {
+    changeGoodPriceInfoAction(state, { payload }: IAction<IHomeAreaV2>) {
       state.goodPriceInfo = payload
     },
-    changeHighScoreInfoAction(state, { payload }: IAction<IHighScoreInfo>) {
+    changeHighScoreInfoAction(state, { payload }: IAction<IHomeAreaV2>) {
       state.highScoreInfo = payload
     },
-    changeHotPlaceInfoAction(state, { payload }: IAction<IHomeArea>) {
+    changeHotPlaceInfoAction(state, { payload }: IAction<IHomeAreaV1>) {
       state.hotPlaceInfo = payload
     },
-    changeWonderfulPlaceAction(state, { payload }: IAction<IHomeArea>) {
+    changeWonderfulPlaceAction(state, { payload }: IAction<IHomeAreaV1>) {
       state.wonderfulPlaceInfo = payload
     },
     changeLongForAction(state, { payload }: IAction<ILongForInfo>) {
       state.longForInfo = payload
     },
-    changePlusAction(state, { payload }: IAction<IPlusInfo>) {
+    changePlusAction(state, { payload }: IAction<IHomeAreaV2>) {
       state.plusInfo = payload
     },
   },

@@ -20,13 +20,13 @@ const HomeSectionV3 = memo((props: IProps) => {
 
       <div className="plus-list">
         <ScrollView showShade={false}>
-          {infoData.list?.map((item) => {
+          {infoData.areaRoom?.rooms?.map((item) => {
             return <RoomItem key={item.id} itemData={item} itemWidth="20%" />
           })}
         </ScrollView>
       </div>
 
-      <SectionFooter name="plus" />
+      <SectionFooter name="plus" areaName={infoData.areaRoom?.name ?? ''} />
     </HomeSectionV3Wrapper>
   )
 })

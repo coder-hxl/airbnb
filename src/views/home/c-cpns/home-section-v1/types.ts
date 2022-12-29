@@ -1,11 +1,5 @@
-import { IHomeRoom } from '@/store/modules/home/types'
-
-interface IInofData {
-  title?: string
-  subtitle?: string | null
-  list: IHomeRoom[]
-}
+import { IHomeAreaV2 } from '@/store/modules/home/types'
 
 export interface IProps {
-  infoData: IInofData
+  infoData: IHomeAreaV2
 }

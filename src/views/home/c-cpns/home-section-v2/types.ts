@@ -1,5 +1,5 @@
-import { IHomeArea } from '@/store/modules/home/types'
+import { IHomeAreaV1 } from '@/store/modules/home/types'
 
 export interface IProps {
-  infoData: IHomeArea
+  infoData: IHomeAreaV1
 }

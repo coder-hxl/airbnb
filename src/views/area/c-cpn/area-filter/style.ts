@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const EntireFilterWrapper = styled.div`
+const AreaFilterWrapper = styled.div`
   position: fixed;
   top: 80px;
   right: 0;
@@ -31,4 +31,4 @@ const EntireFilterWrapper = styled.div`
   }
 `
 
-export default EntireFilterWrapper
+export default AreaFilterWrapper

@@ -2,10 +2,10 @@ import React, { memo, useState } from 'react'
 
 import filterData from '@/assets/data/filter_data.json'
 
-import EntireFilterWrapper from './style'
+import AreaFilterWrapper from './style'
 import classNames from 'classnames'
 
-const EntireFilter = memo(() => {
+const AreaFilter = memo(() => {
   const [selectItems, setSelectItems] = useState<string[]>([])
 
   function filterClickHandle(item: string) {
@@ -19,13 +19,13 @@ const EntireFilter = memo(() => {
   }
 
   return (
-    <EntireFilterWrapper>
+    <AreaFilterWrapper>
       {filterData.map((item) => {
         return (
           <div
             key={item}
             className={classNames('filter-btn', {
-              active: selectItems.includes(item),
+              active: selectItems.includes(item)
             })}
             onClick={() => filterClickHandle(item)}
           >
@@ -33,8 +33,8 @@ const EntireFilter = memo(() => {
           </div>
         )
       })}
-    </EntireFilterWrapper>
+    </AreaFilterWrapper>
   )
 })
 
-export default EntireFilter
+export default AreaFilter

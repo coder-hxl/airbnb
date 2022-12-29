@@ -1,10 +1,10 @@
 export interface IHomeState {
-  goodPriceInfo: IGoodPriceInfo
-  highScoreInfo: IHighScoreInfo
-  hotPlaceInfo: IHomeArea
-  wonderfulPlaceInfo: IHomeArea
+  goodPriceInfo: IHomeAreaV2
+  highScoreInfo: IHomeAreaV2
+  hotPlaceInfo: IHomeAreaV1
+  wonderfulPlaceInfo: IHomeAreaV1
   longForInfo: ILongForInfo
-  plusInfo: IPlusInfo
+  plusInfo: IHomeAreaV2
 }
 
 export interface IHomeRoom {
@@ -19,80 +19,36 @@ export interface IHomeRoom {
   scoreDesc: string | null
 }
 
-export interface IHomeArea {
+export interface IAreaRoom {
+  id: number
+  name: string
+  extPath: string
+  deep: number
+  rooms: IHomeRoom[]
+}
+
+export interface IHomeAreaV1 {
   title?: string
   subtitle?: string | null
-  list?: {
-    id: number
-    name: string
-    extPath: string
-    deep: number
-    rooms: IHomeRoom[]
-  }[]
+  type?: string
+  list?: IAreaRoom[]
+}
+
+export interface IHomeAreaV2 {
+  title?: string
+  subtitle?: string | null
+  type?: string
+  areaRoom?: IAreaRoom
 }
 
 export interface ILongForInfo {
   title?: string
   subtitle?: string
+  type?: string
   list?: {
     id: number
     city: string
     price: string
     pictureUrl: string
-  }[]
-}
-
-export interface IGoodPriceInfo {
-  _id?: string
-  type?: string
-  title?: string
-  list?: IHomeRoomDetail[]
-}
-
-export interface IHighScoreInfo {
-  _id?: string
-  type?: string
-  title?: string
-  subtitle?: string
-  list?: IHomeRoomDetail[]
-}
-
-export interface IPlusInfo {
-  _id?: string
-  type?: string
-  title?: string
-  subtitle?: string
-  list?: IHomeRoomDetail[]
-}
-
-export interface IHomeRoomDetail {
-  id: string
-  picture_url: string
-  verify_info: {
-    messages: string[]
-    text_color: string
-  }
-  name: string
-  price: number
-  price_format: string
-  star_rating_color: string
-  reviews_count: number
-  bottom_info?: {
-    content: string
-    content_color: string
-    font_size: string
-    visibility: string
-  }
-  lat: number
-  lng: number
-  image_url: string
-  star_rating?: number
-  reviews?: {
-    comments: string
-    created_at: string
-    is_translated: boolean
-    localized_date: string
-    reviewer_image_url: string
-    review_id: string
   }[]
 }

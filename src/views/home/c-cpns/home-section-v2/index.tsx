@@ -29,7 +29,10 @@ const HomeSectionV2 = memo((props: IProps) => {
         roomList={infoData.list?.[activeIndex].rooms ?? []}
         itemWidt="33.333%"
       />
-      <SectionFooter name={tabNames[activeIndex]} />
+      <SectionFooter
+        name={tabNames[activeIndex]}
+        areaName={tabNames[activeIndex]}
+      />
     </HomeSectionV2Wrapper>
   )
 })

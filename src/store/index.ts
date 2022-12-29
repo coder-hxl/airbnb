@@ -1,17 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 import homeReducer from './modules/home'
-import entireReducer from './modules/entire'
+import areaReducer from './modules/area'
 import detailReducer from './modules/detail'
 import mainReducer from './modules/main'
 
 const store = configureStore({
   reducer: {
     home: homeReducer,
-    entire: entireReducer,
+    area: areaReducer,
     detail: detailReducer,
-    main: mainReducer,
-  },
+    main: mainReducer
+  }
 })
 
 export default store

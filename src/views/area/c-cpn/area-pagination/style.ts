@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { IStyledProps } from './types'
 
-const EntirePaginactionWrapper = styled.div`
+const AreaPaginactionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,4 +37,4 @@ const EntirePaginactionWrapper = styled.div`
   }
 `
 
-export default EntirePaginactionWrapper
+export default AreaPaginactionWrapper

@@ -1,15 +1,15 @@
 import * as types from './constants'
 
-import { IEntireState, IAction } from './types'
+import { IAreaState, IAction } from './types'
 
-const initialState: IEntireState = {
+const initialState: IAreaState = {
   roomList: [],
   totalCount: 0,
   currentPage: 0,
   isLoading: false,
 }
 
-function reducer(state = initialState, action: IAction): IEntireState {
+function reducer(state = initialState, action: IAction): IAreaState {
   switch (action.type) {
     case types.CHANGE_ROOM_LIST:
       return { ...state, roomList: action.roomList ?? [] }

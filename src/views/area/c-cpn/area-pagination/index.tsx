@@ -2,16 +2,18 @@ import React, { memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Pagination } from '@mui/material'
 
-import { fetchRoomDataAction } from '@/store/modules/entire/actions'
+import { fetchRoomDataAction } from '@/store/modules/area/actions'
 
-import EntirePaginactionWrapper from './style'
+import AreaPaginactionWrapper from './style'
 
 import { RootState } from '@/store'
+import { IProps } from './types'
 
-const EntirePagination = memo(() => {
+const AreaPagination = memo((props: IProps) => {
+  const { areaName } = props
   const { totalCount, currentPage } = useSelector((state: RootState) => ({
-    totalCount: state.entire.totalCount,
-    currentPage: state.entire.currentPage,
+    totalCount: state.area.totalCount,
+    currentPage: state.area.currentPage
   }))
 
   const pageCount = Math.ceil(totalCount / 20)
@@ -24,11 +26,11 @@ const EntirePagination = memo(() => {
     page: number
   ) {
     window.scrollTo(0, 0)
-    dispatch(fetchRoomDataAction(page - 1))
+    dispatch(fetchRoomDataAction(areaName, page - 1))
   }
 
   return (
-    <EntirePaginactionWrapper>
+    <AreaPaginactionWrapper>
       {!!pageCount && (
         <>
           <Pagination count={pageCount} onChange={paginationChangeHandle} />
@@ -37,8 +39,8 @@ const EntirePagination = memo(() => {
           </div>
         </>
       )}
-    </EntirePaginactionWrapper>
+    </AreaPaginactionWrapper>
   )
 })
 
-export default EntirePagination
+export default AreaPagination

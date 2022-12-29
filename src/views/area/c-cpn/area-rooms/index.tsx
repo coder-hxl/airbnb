@@ -5,47 +5,47 @@ import { useNavigate } from 'react-router-dom'
 import { RootState } from '@/store'
 import { changeDetailInfoAction } from '@/store/modules/detail'
 
-import EntireRoomsWrapper from './style'
+import AreaRoomsWrapper from './style'
 import RoomItem from '@/components/room-item'
 
-import { IEntireRoomDetail } from '@/store/modules/entire/types'
+import { IAreaRoom } from '@/store/modules/area/types'
 
-const EntireRooms = memo(() => {
+const AreaRooms = memo(() => {
   const { roomList, totalCount, isLoading } = useSelector(
     (state: RootState) => ({
-      roomList: state.entire.roomList,
-      totalCount: state.entire.totalCount,
-      isLoading: state.entire.isLoading,
+      roomList: state.area.roomList,
+      totalCount: state.area.totalCount,
+      isLoading: state.area.isLoading
     }),
     shallowEqual
   )
   const navigate = useNavigate()
 
   const dispatch = useDispatch()
-  function itemClick(itemData: IEntireRoomDetail) {
-    dispatch(changeDetailInfoAction(itemData))
-    navigate('/detail')
+  function itemClick(itemData: IAreaRoom) {
+    // dispatch(changeDetailInfoAction(itemData))
+    // navigate('/detail')
   }
 
   return (
-    <EntireRoomsWrapper>
+    <AreaRoomsWrapper>
       <h2 className="title">{totalCount}多处住宿</h2>
       <div className="room-list">
-        {/* {roomList.map((item) => {
+        {roomList.map((item) => {
           return (
             <RoomItem
-              key={item._id}
+              key={item.id}
               itemData={item}
               itemWidth="20%"
               itemClick={() => itemClick(item)}
             />
           )
-        })} */}
+        })}
       </div>
 
       {isLoading && <div className="shade"></div>}
-    </EntireRoomsWrapper>
+    </AreaRoomsWrapper>
   )
 })
 
-export default EntireRooms
+export default AreaRooms

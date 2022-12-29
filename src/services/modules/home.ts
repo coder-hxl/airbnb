@@ -1,27 +1,25 @@
 import xLRequest from '..'
 
 import {
-  IGoodPriceInfo,
-  IHighScoreInfo,
-  IHomeArea,
+  IHomeAreaV1,
+  IHomeAreaV2,
   ILongForInfo,
-  IPlusInfo,
 } from '@/store/modules/home/types'
 
 export function getHomeGoodPriceData() {
-  return xLRequest.get<IGoodPriceInfo>({ url: '/home/goodprice' })
+  return xLRequest.get<IHomeAreaV2>({ url: '/home/goodprice' })
 }
 
 export function getHomeHighScoreData() {
-  return xLRequest.get<IHighScoreInfo>({ url: '/home/highscore' })
+  return xLRequest.get<IHomeAreaV2>({ url: '/home/highscore' })
 }
 
 export function getHotPlaceData() {
-  return xLRequest.get<IHomeArea>({ url: '/home/hotplace' })
+  return xLRequest.get<IHomeAreaV1>({ url: '/home/hotplace' })
 }
 
 export function getWonderfulPlaceData() {
-  return xLRequest.get<IHomeArea>({ url: '/home/wonderfulplace' })
+  return xLRequest.get<IHomeAreaV1>({ url: '/home/wonderfulplace' })
 }
 
 export function getLongForData() {
@@ -29,5 +27,5 @@ export function getLongForData() {
 }
 
 export function getPlusData() {
-  return xLRequest.get<IPlusInfo>({ url: '/home/plus' })
+  return xLRequest.get<IHomeAreaV2>({ url: '/home/plus' })
 }
