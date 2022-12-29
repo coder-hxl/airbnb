@@ -1,49 +1,25 @@
-import { IHomeRoom } from '@/store/modules/home/types'
 import { IDivStyledComponent, IDivStyledProps } from '@/types/styled-component'
+
+interface IItemData {
+  id: number
+  name: string
+  type: string
+  price: number
+  coverUrl: string
+  lng?: number
+  lat?: number
+  starRating: number | null
+  reviewsCount: number
+  bedTypes: string[]
+  scoreDesc: string | null
+  pictureUrls?: string[]
+}
 
 export interface IProps {
   itemData: IItemData
   itemWidth: string
   itemClick?: Function
 }
-
-interface IItemData extends IHomeRoom {
-  picture_urls?: string[]
-}
-
-// interface IItemData {
-//   _id?: string
-//   id: string
-//   picture_url: string
-//   picture_urls?: string[]
-//   verify_info: {
-//     messages: string[]
-//     text_color: string
-//   }
-//   name: string
-//   price: number
-//   price_format: string
-//   star_rating_color: string
-//   reviews_count: number
-//   bottom_info?: {
-//     content: string
-//     content_color: string
-//     font_size: string
-//     visibility: string
-//   } | null
-//   lat: number
-//   lng: number
-//   image_url: string
-//   star_rating?: number
-//   reviews?: {
-//     comments: string
-//     created_at: string
-//     is_translated: boolean
-//     localized_date: string
-//     reviewer_image_url: string
-//     review_id: string | number
-//   }[]
-// }
 
 type StyledComponentProps = {
   itemWidth: string

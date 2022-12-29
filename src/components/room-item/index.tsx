@@ -24,7 +24,7 @@ const RoomItem = memo((props: IProps) => {
     event.stopPropagation()
     isNext ? carouselRef.current.next() : carouselRef.current.prev()
 
-    const length = itemData.picture_urls?.length
+    const length = itemData.pictureUrls?.length
     if (length !== undefined) {
       let newIndex = isNext ? selectIndex + 1 : selectIndex - 1
       if (newIndex < 0) newIndex = length - 1
@@ -62,12 +62,12 @@ const RoomItem = memo((props: IProps) => {
 
       <div className="indicator">
         <Indicator selectIndex={selectIndex}>
-          {itemData.picture_urls?.map((item, index) => {
+          {itemData.pictureUrls?.map((item, index) => {
             return (
               <div key={item} className={classNames('item')}>
                 <div
                   className={classNames('dot', {
-                    active: selectIndex === index,
+                    active: selectIndex === index
                   })}
                 ></div>
               </div>
@@ -77,7 +77,7 @@ const RoomItem = memo((props: IProps) => {
       </div>
 
       <Carousel ref={carouselRef} dots={false}>
-        {itemData.picture_urls?.map((item) => {
+        {itemData.pictureUrls?.map((item) => {
           return (
             <div key={item} className="cover">
               <img className="picture" src={item} alt="" />
@@ -94,7 +94,7 @@ const RoomItem = memo((props: IProps) => {
       itemWidth={itemWidth}
       onClick={ItemClickHandle}
     >
-      {!itemData.picture_urls ? pictureEl : sliderEl}
+      {!itemData.pictureUrls ? pictureEl : sliderEl}
 
       <div className="i-content">
         <div className="type">
