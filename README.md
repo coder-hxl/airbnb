@@ -41,7 +41,7 @@ Airbnb —— 基于 React、TS、RTK 等技术开发。
 
 #### PictureBorwser组件
 
-该组件是一个图片浏览器，使用 Indicator 组件当底部的预览器。(目前在 Detail 页面使用)
+该组件是一个图片浏览器，使用 Indicator 组件当底部的预览器。(目前在 Room 页面使用)
 
 <u>**详情请查看 src/base-ui**</u>
 
@@ -49,7 +49,7 @@ Airbnb —— 基于 React、TS、RTK 等技术开发。
 
 #### Header组件
 
-该组件中间的搜索框包含两种动画，展示效果由 Store 的 Main State 属性决定, 可设置 fixed 和 alpha 属性。(目前在 Home / Area / Detail 页面使用)
+该组件中间的搜索框包含两种动画，展示效果由 Store 的 Main State 属性决定, 可设置 fixed 和 alpha 属性。(目前在 Home / Area / Room 页面使用)
 
 #### RoomItem组件
 
@@ -61,7 +61,7 @@ Airbnb —— 基于 React、TS、RTK 等技术开发。
 
 头部: 使用 Header 组件。
 
-内容: 通过 Router 展示 Home / Area / Detail 组件。
+内容: 通过 Router 展示 Home / Area / Room 组件。
 
 底部: 使用 Footer 组件。
 
@@ -93,13 +93,13 @@ Airbnb —— 基于 React、TS、RTK 等技术开发。
   
   1. Filter 组件。
   
-  2. 房间组件：使用 RoomItem 组件展示房间数据，房间被点击时会派发 Action 将当前房间数据传入 Store 的 Detail State 中。
+  2. 房间组件：使用 RoomItem 组件展示房间数据，房间被点击时会派发 Action 将当前房间数据传入 Store 的 Room State 中。
   
   3. 分页器组件：根据页数 ，派发 Action 请求数据。
 
-#### Detail
+#### Room
 
-* 数据来源：从 Store 的 Detail State 获取数据。
+* 数据来源：从 Store 的 Room State 获取数据。
 * 修改 Header 组件：派发 Action 将 Store 的 Main State 的 fixed 和 alpha 设置为 false。
 * 内容：
 

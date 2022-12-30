@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const DetailPicturesWrapper = styled.div`
+const RoomPicturesWrapper = styled.div`
   position: relative;
   height: 600px;
   overflow: hidden;
@@ -82,4 +82,4 @@ const DetailPicturesWrapper = styled.div`
   }
 `
 
-export default DetailPicturesWrapper
+export default RoomPicturesWrapper

@@ -1,16 +1,16 @@
 import PictureBrowser from '@/base-ui/picture-browser'
 import React, { memo, useState } from 'react'
 
-import DetailPicturesWrapper from './style'
+import RoomPicturesWrapper from './style'
 
-import { IDetailPictureProps } from './types'
+import { IRoomPictureProps } from './types'
 
-const DetailPictures = memo((props: IDetailPictureProps) => {
+const RoomPictures = memo((props: IRoomPictureProps) => {
   const { pictures } = props
   const [showBrowser, setShowBrowser] = useState(false)
 
   return (
-    <DetailPicturesWrapper>
+    <RoomPicturesWrapper>
       <div className="pictures" onClick={(e) => setShowBrowser(true)}>
         <div className="left">
           <div className="item">
@@ -40,8 +40,8 @@ const DetailPictures = memo((props: IDetailPictureProps) => {
           closeBtnClick={() => setShowBrowser(false)}
         />
       )}
-    </DetailPicturesWrapper>
+    </RoomPicturesWrapper>
   )
 })
 
-export default DetailPictures
+export default RoomPictures

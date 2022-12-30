@@ -18,7 +18,6 @@ interface IItemData {
 export interface IProps {
   itemData: IItemData
   itemWidth: string
-  itemClick?: Function
 }
 
 type StyledComponentProps = {

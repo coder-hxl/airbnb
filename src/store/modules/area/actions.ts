@@ -22,7 +22,7 @@ export function changeIsLoading(isLoading: boolean): IAction {
   return { type: types.CHANGE_IS_LOADING, isLoading }
 }
 
-export function fetchRoomDataAction(areaName: string, page = 0) {
+export function fetchAreaDataAction(areaName: string, page = 0) {
   return async (dispatch: Dispatch, state: RootState) => {
     dispatch(changeIsLoading(true))
 

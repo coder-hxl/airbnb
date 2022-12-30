@@ -1,4 +1,5 @@
 import React, { memo, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Rating } from '@mui/material'
 import { Carousel } from 'antd'
 import type { CarouselRef } from 'antd/lib/carousel'
@@ -12,7 +13,8 @@ import Indicator from '@/base-ui/indicator'
 import type { IProps } from './types'
 
 const RoomItem = memo((props: IProps) => {
-  const { itemData, itemWidth, itemClick } = props
+  const { itemData, itemWidth } = props
+  const navigate = useNavigate()
 
   const [selectIndex, setSelectIndex] = useState(0)
   const carouselRef = useRef<CarouselRef>({} as CarouselRef)
@@ -34,7 +36,8 @@ const RoomItem = memo((props: IProps) => {
   }
 
   function ItemClickHandle() {
-    if (itemClick) itemClick()
+    const { id } = itemData
+    navigate(`/room/${id}`)
   }
 
   const pictureEl = (

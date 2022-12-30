@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Pagination } from '@mui/material'
 
-import { fetchRoomDataAction } from '@/store/modules/area/actions'
+import { fetchAreaDataAction } from '@/store/modules/area/actions'
 
 import AreaPaginactionWrapper from './style'
 
@@ -26,7 +26,7 @@ const AreaPagination = memo((props: IProps) => {
     page: number
   ) {
     window.scrollTo(0, 0)
-    dispatch(fetchRoomDataAction(areaName, page - 1))
+    dispatch(fetchAreaDataAction(areaName, page - 1))
   }
 
   return (

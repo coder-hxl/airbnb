@@ -2,7 +2,7 @@ import { lazy } from 'react'
 import { RouteObject, Navigate } from 'react-router-dom'
 
 const Home = lazy(() => import('@/views/home'))
-const Detail = lazy(() => import('@/views/detail'))
+const Room = lazy(() => import('@/views/room'))
 const Area = lazy(() => import('@/views/area'))
 
 const routes: RouteObject[] = [
@@ -15,8 +15,8 @@ const routes: RouteObject[] = [
     element: <Home />
   },
   {
-    path: '/detail',
-    element: <Detail />
+    path: '/room/:roomId',
+    element: <Room />
   },
   {
     path: '/area/:areaName',
