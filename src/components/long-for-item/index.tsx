@@ -1,4 +1,5 @@
 import React, { memo } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import LongForItemWrapper from './style'
 
@@ -6,10 +7,16 @@ import { IProps } from './types'
 
 const LongForItem = memo((props: IProps) => {
   const { itemData } = props
+  const navigate = useNavigate()
+
+  function innerClickHandle() {
+    const { city } = itemData
+    navigate(`/area/${city}`)
+  }
 
   return (
     <LongForItemWrapper>
-      <div className="inner">
+      <div className="inner" onClick={innerClickHandle}>
         <img className="cover" src={itemData.pictureUrl} alt="" />
         <div className="cover-shade"></div>
         <div className="info">
