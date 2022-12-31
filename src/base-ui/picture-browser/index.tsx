@@ -86,13 +86,13 @@ const PictureBrowser = memo((props: IPictureBrowserProps) => {
             </div>
           </div>
           <div className="list">
-            <Indicator selectIndex={currentIndex}>
+            <Indicator selectIndex={currentIndex} center={false}>
               {pictureUrls.map((item, index) => {
                 return (
                   <div
                     key={item}
                     className={classNames('item', {
-                      active: index === currentIndex,
+                      active: index === currentIndex
                     })}
                     onClick={(e) => previewItemClickHandle(index)}
                   >

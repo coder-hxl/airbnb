@@ -1,13 +1,23 @@
-import React, { memo, useEffect, useRef } from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react'
 
 import IndicatorWrapper from './style'
 
 import { IProps } from './types'
 
 const Indicator = memo((props: IProps) => {
-  const { children, selectIndex } = props
+  const { children, selectIndex, center = true } = props
 
+  const [isCenter, setIsCenter] = useState(center)
   const contentRef = useRef<HTMLDivElement>({} as HTMLDivElement)
+
+  useEffect(() => {
+    if (center) {
+      const contentClientWidth = contentRef.current.clientWidth
+      const contentScrollWidth = contentRef.current.scrollWidth
+      const isCenter = contentClientWidth === contentScrollWidth
+      setIsCenter(isCenter)
+    }
+  }, [center])
 
   useEffect(() => {
     const contentClientWidth = contentRef.current.clientWidth
@@ -30,7 +40,7 @@ const Indicator = memo((props: IProps) => {
   }, [selectIndex])
 
   return (
-    <IndicatorWrapper>
+    <IndicatorWrapper isCenter={isCenter}>
       <div className="in-content" ref={contentRef}>
         {children}
       </div>
