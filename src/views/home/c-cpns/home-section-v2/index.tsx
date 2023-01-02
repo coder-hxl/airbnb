@@ -32,6 +32,7 @@ const HomeSectionV2 = memo((props: IProps) => {
       <SectionFooter
         name={tabNames[activeIndex]}
         areaName={tabNames[activeIndex]}
+        type={infoData.type ?? ''}
       />
     </HomeSectionV2Wrapper>
   )

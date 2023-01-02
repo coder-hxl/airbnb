@@ -26,7 +26,11 @@ const HomeSectionV3 = memo((props: IProps) => {
         </ScrollView>
       </div>
 
-      <SectionFooter name="plus" areaName={infoData.areaRoom?.name ?? ''} />
+      <SectionFooter
+        name="plus"
+        areaName={infoData.areaRoom?.name ?? ''}
+        type={infoData.type ?? ''}
+      />
     </HomeSectionV3Wrapper>
   )
 })

@@ -7,13 +7,13 @@ import IconArrowRight from '@/assets/svg/icon-arrow-right'
 import { IProps } from './types'
 
 const SectionFooter = memo((props: IProps) => {
-  const { name, areaName } = props
+  const { name, areaName, type } = props
 
   const navigate = useNavigate()
   const footerName = name ? `查看更多${name}房源` : '显示全部'
 
   function footerClickHandle() {
-    navigate(`/area/${areaName}`)
+    navigate(`/area/${areaName}?type=${type}`)
   }
 
   return (

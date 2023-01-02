@@ -11,7 +11,7 @@ const LongForItem = memo((props: IProps) => {
 
   function innerClickHandle() {
     const { city } = itemData
-    navigate(`/area/${city}`)
+    navigate(`/area/${city}?type=longFor`)
   }
 
   return (

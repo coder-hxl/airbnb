@@ -10,7 +10,7 @@ import { RootState } from '@/store'
 import { IProps } from './types'
 
 const AreaPagination = memo((props: IProps) => {
-  const { areaName } = props
+  const { areaName, type } = props
   const { totalCount, currentPage } = useSelector((state: RootState) => ({
     totalCount: state.area.totalCount,
     currentPage: state.area.currentPage
@@ -26,7 +26,7 @@ const AreaPagination = memo((props: IProps) => {
     page: number
   ) {
     window.scrollTo(0, 0)
-    dispatch(fetchAreaDataAction(areaName, page - 1))
+    dispatch(fetchAreaDataAction(areaName, type, page - 1))
   }
 
   return (

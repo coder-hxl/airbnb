@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 
 import { fetchAreaDataAction } from '@/store/modules/area/actions'
 
@@ -13,17 +13,19 @@ import { changeHeaderConfigAction } from '@/store/modules/main'
 const Area = memo(() => {
   const dispatch = useDispatch<any>()
   const { areaName } = useParams()
+  const [searchParams] = useSearchParams()
+  const query = Object.fromEntries(searchParams)
 
   useEffect(() => {
-    dispatch(fetchAreaDataAction(areaName ?? ''))
+    dispatch(fetchAreaDataAction(areaName ?? '', query.type))
     dispatch(changeHeaderConfigAction({ isFixed: true, topAlpha: false }))
-  }, [dispatch, areaName])
+  }, [dispatch, areaName, query])
 
   return (
     <AreaWrapper>
       <AreaFilter />
       <AreaRooms />
-      <AreaPagination areaName={areaName ?? ''} />
+      <AreaPagination areaName={areaName ?? ''} type={query.type} />
     </AreaWrapper>
   )
 })

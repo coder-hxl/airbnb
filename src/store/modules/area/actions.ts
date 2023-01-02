@@ -22,11 +22,11 @@ export function changeIsLoading(isLoading: boolean): IAction {
   return { type: types.CHANGE_IS_LOADING, isLoading }
 }
 
-export function fetchAreaDataAction(areaName: string, page = 0) {
+export function fetchAreaDataAction(areaName: string, type: string, page = 0) {
   return async (dispatch: Dispatch, state: RootState) => {
     dispatch(changeIsLoading(true))
 
-    const res = await getAreaRoomList(areaName, page * 20)
+    const res = await getAreaRoomList(areaName, type, page * 20)
 
     dispatch(changeIsLoading(false))
     dispatch(changeCurrentPage(page))

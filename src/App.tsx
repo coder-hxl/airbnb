@@ -14,7 +14,7 @@ const App = memo(() => {
   return (
     <div className="App">
       <AppHeader />
-      <Suspense fallback="Loading...">
+      <Suspense fallback="">
         <div className="content">{useRoutes(routes)}</div>
       </Suspense>
       <AppFooter />
