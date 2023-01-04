@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const RoomPicturesWrapper = styled.div`
   position: relative;
-  height: 600px;
+  height: 760px;
   overflow: hidden;
 
   .pictures {
@@ -48,22 +48,20 @@ const RoomPicturesWrapper = styled.div`
       }
     }
 
-    .left {
-      flex: 1;
+    .first {
+      flex: 2;
+      height: 100%;
 
       .item {
-        width: 100%;
         height: 100%;
       }
     }
 
-    .right {
+    .two {
       flex: 1;
-      display: flex;
-      flex-wrap: wrap;
+      height: 100%;
 
       .item {
-        width: 50%;
         height: 50%;
       }
     }

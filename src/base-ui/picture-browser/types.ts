@@ -2,7 +2,8 @@ import { IDivStyledComponent, IDivStyledProps } from '@/types/styled-component'
 
 export interface IPictureBrowserProps {
   pictureUrls: string[]
-  closeBtnClick: React.MouseEventHandler<HTMLDivElement>
+  defaultIndex?: number
+  closeBtnClick(index: number): any
 }
 
 interface ISCProps {

@@ -13,8 +13,8 @@ import { IPictureBrowserProps } from './types'
 import classNames from 'classnames'
 
 const PictureBrowser = memo((props: IPictureBrowserProps) => {
-  const { pictureUrls, closeBtnClick } = props
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const { pictureUrls, defaultIndex = 0, closeBtnClick } = props
+  const [currentIndex, setCurrentIndex] = useState(defaultIndex)
   const [isNext, setIsNext] = useState(true)
   const [showList, setShowList] = useState(true)
 
@@ -44,7 +44,7 @@ const PictureBrowser = memo((props: IPictureBrowserProps) => {
   return (
     <PictureBrowserWrapper isNext={isNext} showList={showList}>
       <div className="top">
-        <div className="close-btn" onClick={closeBtnClick}>
+        <div className="close-btn" onClick={() => closeBtnClick(currentIndex)}>
           <IconClose />
         </div>
       </div>

@@ -8,6 +8,9 @@ import { IState, IRoomInfo } from './types'
 export const fetchRoomDataAction = createAsyncThunk(
   'fetchData',
   (roomId: string, { dispatch }) => {
+    // 把旧的清除掉
+    dispatch(changeRoomInfoAction({}))
+
     getRoomData(roomId).then((res) => {
       dispatch(changeRoomInfoAction(res))
     })
