@@ -12,7 +12,7 @@ export interface IRoomInfo {
   price?: number
   type?: string
   coverUrl?: string
-  starRating?: string | null
+  starRating?: number | null
   lng?: number
   lat?: number
   scoreDesc?: string | null
@@ -27,6 +27,8 @@ export interface IRoomInfo {
           name: string
           avatarUrl?: string
         }
+        createAt: any
+        star_rating: number
       }[]
     | null
   pictureUrls?: string[]
