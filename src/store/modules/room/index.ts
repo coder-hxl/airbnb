@@ -1,12 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-import { getRoomData } from '@/services/modules/room'
+import { getReviewData, getRoomData } from '@/services/modules/room'
 
 import { IAction } from '@/store/types'
-import { IState, IRoomInfo } from './types'
+import { IState, IRoomInfo, IReview } from './types'
 
 export const fetchRoomDataAction = createAsyncThunk(
-  'fetchData',
+  'fetchRoomInfoData',
   (roomId: string, { dispatch }) => {
     // 把旧的清除掉
     dispatch(changeRoomInfoAction({}))
@@ -17,8 +17,20 @@ export const fetchRoomDataAction = createAsyncThunk(
   }
 )
 
+export const fetchReviewDataAction = createAsyncThunk(
+  'fetchReviewData',
+  (data: { roomId: number; offset?: number }, { dispatch }) => {
+    const { roomId, offset = 0 } = data
+
+    getReviewData(roomId, offset, 8).then((res) => {
+      dispatch(changeReviewAction(res))
+    })
+  }
+)
+
 const initialState: IState = {
-  roomInfo: {}
+  roomInfo: {},
+  review: {}
 }
 
 const roomSlice = createSlice({
@@ -27,9 +39,13 @@ const roomSlice = createSlice({
   reducers: {
     changeRoomInfoAction(state, { payload }: IAction<IRoomInfo>) {
       state.roomInfo = payload
+    },
+
+    changeReviewAction(state, { payload }: IAction<IReview>) {
+      state.review = payload
     }
   }
 })
 
-export const { changeRoomInfoAction } = roomSlice.actions
+export const { changeRoomInfoAction, changeReviewAction } = roomSlice.actions
 export default roomSlice.reducer

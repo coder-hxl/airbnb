@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Pagination } from '@mui/material'
 
@@ -21,13 +21,13 @@ const AreaPagination = memo((props: IProps) => {
   const endCount = (currentPage + 1) * 20
 
   const dispatch = useDispatch<any>()
-  function paginationChangeHandle(
-    event: React.ChangeEvent<unknown>,
-    page: number
-  ) {
-    window.scrollTo(0, 0)
-    dispatch(fetchAreaDataAction(areaName, type, page - 1))
-  }
+  const paginationChangeHandle = useCallback(
+    (event: React.ChangeEvent<unknown>, page: number) => {
+      window.scrollTo(0, 0)
+      dispatch(fetchAreaDataAction(areaName, type, page - 1))
+    },
+    [dispatch, areaName, type]
+  )
 
   return (
     <AreaPaginactionWrapper>

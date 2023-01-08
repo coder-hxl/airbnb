@@ -1,10 +1,11 @@
 import styled from 'styled-components'
+import { IStyledProps } from './types'
 
 const RoomInfosWrapper = styled.div`
   --border-bottom-color: #ebebeb;
 
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 10px 0 20px;
   width: 1080px;
 
   .area {
@@ -12,79 +13,86 @@ const RoomInfosWrapper = styled.div`
     border-bottom: 1px solid var(--border-bottom-color);
   }
 
-  .room-detail {
-    .introduce {
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .name {
-      padding: 14px 0;
-      font-size: 30px;
-      font-weight: 600;
-    }
-
-    .bed-type {
-      font-size: 15px;
-    }
-
-    .star-info {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 6px 8px;
-      font-size: 12px;
-      font-weight: 600;
-      color: #2a6e00;
-      background-color: #eaf7ea;
-      border-radius: 20px;
-    }
-  }
-
-  .landlord-detail {
-    .landlord {
-      display: flex;
-      align-items: center;
-
-      .avatar {
-        width: 56px;
-        height: 56px;
-
-        img {
-          width: 100%;
-        }
+  .detail {
+    .room {
+      .introduce {
+        font-size: 12px;
+        font-weight: 600;
       }
 
       .name {
-        margin-left: 14px;
-        font-size: 16px;
+        margin: 10px 0 6px;
+        font-size: 30px;
         font-weight: 600;
+      }
+
+      .address {
+        margin-bottom: 12px;
+        font-weight: 600;
+      }
+
+      .bed-type {
+        font-size: 15px;
+      }
+
+      .star-info {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 6px 8px;
+        font-size: 12px;
+        font-weight: 600;
+        color: #2a6e00;
+        background-color: #eaf7ea;
+        border-radius: 20px;
       }
     }
 
-    .introduction {
-      position: relative;
-      margin-top: 16px;
-      padding: 26px 16px 20px;
-      background-color: #f8f8f8;
-      border-radius: 10px;
+    .landlord {
+      .landlord {
+        display: flex;
+        align-items: center;
 
-      .triangle {
-        position: absolute;
-        top: -20px;
-        left: 16px;
-        display: inline-block;
-        border: 10px solid transparent;
-        border-bottom: 10px solid #f8f8f8;
+        .avatar {
+          width: 56px;
+          height: 56px;
+
+          img {
+            width: 100%;
+          }
+        }
+
+        .name {
+          margin-left: 14px;
+          font-size: 16px;
+          font-weight: 600;
+        }
       }
 
-      .text {
-        line-height: 22px;
-        font-size: 16px;
+      .introduction {
+        position: relative;
+        margin-top: 16px;
+        padding: 26px 16px 20px;
+        background-color: #f8f8f8;
+        border-radius: 10px;
+
+        .triangle {
+          position: absolute;
+          top: -20px;
+          left: 16px;
+          display: inline-block;
+          border: 10px solid transparent;
+          border-bottom: 10px solid #f8f8f8;
+        }
+
+        .text {
+          line-height: 22px;
+          font-size: 16px;
+        }
       }
     }
   }
 
-  .reviews-container {
+  .review {
     .header {
       margin-top: 16px;
 
@@ -104,7 +112,7 @@ const RoomInfosWrapper = styled.div`
       }
     }
 
-    .reviews {
+    .list {
       padding: 16px 0;
 
       .item {
@@ -132,6 +140,10 @@ const RoomInfosWrapper = styled.div`
               font-size: 16px;
               font-weight: 600;
             }
+
+            .create-at {
+              font-size: 13px;
+            }
           }
         }
 
@@ -141,6 +153,41 @@ const RoomInfosWrapper = styled.div`
 
         .comment {
           font-size: 16px;
+        }
+      }
+    }
+
+    .pagination {
+      margin-top: 10px;
+
+      .MuiPagination-root {
+        .MuiPaginationItem-previousNext {
+          color: #008489;
+          border: 1px solid #008489;
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
+
+        .MuiPaginationItem-page {
+          margin: 0 8px;
+          padding: 4px 0 0 2px;
+          color: #008489;
+
+          &:hover {
+            text-decoration: underline;
+            background-color: transparent;
+          }
+        }
+
+        .Mui-selected {
+          color: #fff;
+          background-color: #008489;
+
+          &:hover {
+            background-color: #008489;
+          }
         }
       }
     }

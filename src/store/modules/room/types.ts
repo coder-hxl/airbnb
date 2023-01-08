@@ -1,5 +1,6 @@
 export interface IState {
-  roomInfo?: IRoomInfo
+  roomInfo: IRoomInfo
+  review: IReview
 }
 
 export interface IRoomInfo {
@@ -12,25 +13,9 @@ export interface IRoomInfo {
   price?: number
   type?: string
   coverUrl?: string
-  starRating?: number | null
   lng?: number
   lat?: number
   scoreDesc?: string | null
-  reviewsCount?: number
-  reviews?:
-    | {
-        id: number
-        comment: string
-        starRating: number
-        user: {
-          id: number
-          name: string
-          avatarUrl?: string
-        }
-        createAt: any
-        star_rating: number
-      }[]
-    | null
   pictureUrls?: string[]
   bedTypes?: string[]
   landlord?: {
@@ -38,4 +23,20 @@ export interface IRoomInfo {
     name: string
     avatarUrl: string | null
   }
+}
+
+export interface IReview {
+  starRating?: number
+  reviewCount?: number
+  list?: {
+    id: number
+    comment: string
+    starRating: number
+    createAt: any
+    user: {
+      id: number
+      name: string
+      avatarUrl: string | null
+    }
+  }[]
 }
