@@ -4,6 +4,7 @@ import { Rating, Pagination } from '@mui/material'
 
 import { fetchReviewDataAction } from '@/store/modules/room'
 import RoomInfosWrapper from './style'
+import IconAvatar from '@/assets/svg/icon_avatar'
 
 import { IProps } from './types'
 import { fullTimeFormat } from '@/utils'
@@ -48,10 +49,11 @@ const RoomInfos = memo((props: IProps) => {
         <div className="landlord area">
           <div className="landlord">
             <div className="avatar">
-              <img
-                src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
-                alt=""
-              />
+              {itemData.landlord?.avatarUrl ? (
+                <img src={itemData.landlord?.avatarUrl} alt="" />
+              ) : (
+                <IconAvatar />
+              )}
             </div>
             <div className="name">房东: {itemData.landlord?.name}</div>
           </div>
@@ -81,10 +83,11 @@ const RoomInfos = memo((props: IProps) => {
               <div className="item" key={item.id}>
                 <div className="user-info">
                   <div className="avatar">
-                    <img
-                      src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"
-                      alt=""
-                    />
+                    {item.user.avatarUrl ? (
+                      <img src={item.user.avatarUrl} alt="" />
+                    ) : (
+                      <IconAvatar />
+                    )}
                   </div>
                   <div className="user">
                     <div className="name">{item.user.name}</div>

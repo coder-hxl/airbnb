@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { IStyledProps } from './types'
 
 const RoomInfosWrapper = styled.div`
   --border-bottom-color: #ebebeb;
