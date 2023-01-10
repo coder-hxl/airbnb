@@ -1,0 +1,4 @@
+export interface IUserState {
+  userInfo: any
+  token: string
+}

@@ -4,9 +4,18 @@ import RightWrapper from './style'
 import IconAvatar from '@/assets/svg/icon_avatar'
 import IconGlobal from '@/assets/svg/icon_global'
 import IconMenu from '@/assets/svg/icon_menu'
+import { useDispatch, useSelector } from 'react-redux'
+import { changeLoginConfigAction } from '@/store/modules/main'
+import { RootState } from '@/store'
 
 const Right = memo(() => {
   const [showPanel, setShowPanel] = useState(false)
+  const { token } = useSelector((state: RootState) => ({
+    token: state.user.token
+  }))
+  const userIsLogin = token === ''
+
+  const dispatch = useDispatch<any>()
 
   useEffect(() => {
     function windowClick() {
@@ -25,11 +34,24 @@ const Right = memo(() => {
     setShowPanel(!showPanel)
   }
 
+  function handleLoginBtnClick(type: 'signUp' | 'signIn') {
+    dispatch(changeLoginConfigAction({ showLogin: true, type }))
+  }
+
   return (
     <RightWrapper>
       <div className="btns">
-        <span className="btn">登录</span>
-        <span className="btn">注册</span>
+        {userIsLogin && (
+          <>
+            <span className="btn" onClick={() => handleLoginBtnClick('signUp')}>
+              登录
+            </span>
+            <span className="btn" onClick={() => handleLoginBtnClick('signIn')}>
+              注册
+            </span>
+          </>
+        )}
+
         <span className="btn">
           <IconGlobal />
         </span>
@@ -43,8 +65,24 @@ const Right = memo(() => {
 
         {showPanel && (
           <div className="panel">
-            <div className="item">注册</div>
-            <div className="item">登录</div>
+            {userIsLogin ? (
+              <>
+                <div
+                  className="item"
+                  onClick={() => handleLoginBtnClick('signUp')}
+                >
+                  登录
+                </div>
+                <div
+                  className="item"
+                  onClick={() => handleLoginBtnClick('signIn')}
+                >
+                  注册
+                </div>
+              </>
+            ) : (
+              <div className="item">账号</div>
+            )}
 
             <div className="partition"></div>
 

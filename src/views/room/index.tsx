@@ -29,7 +29,12 @@ const Room = memo(() => {
   useEffect(() => {
     dispatch(fetchRoomDataAction(roomId ?? ''))
     dispatch(fetchReviewDataAction({ roomId: Number(roomId) }))
-    dispatch(changeHeaderConfigAction({ isFixed: false, topAlpha: false }))
+    dispatch(
+      changeHeaderConfigAction({
+        isFixed: false,
+        topAlpha: false
+      })
+    )
   }, [dispatch, roomId])
 
   return (

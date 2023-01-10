@@ -21,7 +21,7 @@ const Home = memo(() => {
     hotPlaceInfo,
     wonderfulPlaceInfo,
     longForInfo,
-    plusInfo,
+    plusInfo
   } = useSelector(
     (state: RootState) => ({
       goodPriceInfo: state.home.goodPriceInfo,
@@ -29,7 +29,7 @@ const Home = memo(() => {
       hotPlaceInfo: state.home.hotPlaceInfo,
       wonderfulPlaceInfo: state.home.wonderfulPlaceInfo,
       longForInfo: state.home.longForInfo,
-      plusInfo: state.home.plusInfo,
+      plusInfo: state.home.plusInfo
     }),
     shallowEqual
   )
@@ -38,7 +38,12 @@ const Home = memo(() => {
   const dispatch = useDispatch<any>()
   useEffect(() => {
     dispatch(fetchHomeDataAction())
-    dispatch(changeHeaderConfigAction({ isFixed: true, topAlpha: true }))
+    dispatch(
+      changeHeaderConfigAction({
+        isFixed: true,
+        topAlpha: true
+      })
+    )
   }, [dispatch])
 
   return (

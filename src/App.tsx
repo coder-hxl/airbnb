@@ -1,14 +1,21 @@
 import React, { memo, Suspense } from 'react'
 import { useRoutes } from 'react-router-dom'
-import AppFooter from './components/app-footer'
+import { useSelector } from 'react-redux'
 
+import routes from './router'
+import { RootState } from './store'
 import { usePathChangeScrollTop } from './hooks'
 
 import AppHeader from './components/app-header'
-
-import routes from './router'
+import AppFooter from './components/app-footer'
+import AppLogin from './components/app-login'
 
 const App = memo(() => {
+  const { loginConfig } = useSelector((state: RootState) => ({
+    loginConfig: state.main.loginConfig
+  }))
+  const { showLogin } = loginConfig
+
   usePathChangeScrollTop()
 
   return (
@@ -18,6 +25,8 @@ const App = memo(() => {
         <div className="content">{useRoutes(routes)}</div>
       </Suspense>
       <AppFooter />
+
+      {showLogin && <AppLogin />}
     </div>
   )
 })

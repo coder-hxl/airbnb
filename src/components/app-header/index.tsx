@@ -13,7 +13,7 @@ import { useScrollPosition } from '@/hooks'
 
 const AppHeader = memo(() => {
   const { headerConfig } = useSelector((state: RootState) => ({
-    headerConfig: state.main.headerConfig,
+    headerConfig: state.main.headerConfig
   }))
   const { isFixed, topAlpha } = headerConfig
 
