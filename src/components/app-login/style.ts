@@ -6,20 +6,31 @@ const LoginWrapper = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 50px 30px 40px;
+    padding: 50px 32px 46px;
     width: 560px;
     background-color: #fff;
     border-radius: 4px;
     z-index: 999;
 
+    .close {
+      display: flex;
+      justify-content: right;
+
+      .btn {
+        cursor: pointer;
+      }
+    }
+
     .title {
+      margin-top: 4px;
+
       .main-title {
-        font-size: 24px;
+        font-size: 26px;
         font-weight: 600;
       }
 
       .sub-title {
-        margin-top: 10px;
+        margin-top: 14px;
 
         .type-switch {
           margin-left: 6px;
@@ -34,22 +45,26 @@ const LoginWrapper = styled.div`
     }
 
     .forms {
-      margin-top: 20px;
+      margin-top: 24px;
 
       .forget-password {
+        margin-top: 4px;
         text-align: right;
         font-weight: 600;
         color: #008489;
-        cursor: pointer;
 
-        &:hover {
-          text-decoration: underline;
+        span {
+          cursor: pointer;
+
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
 
       .login-btn {
         display: block;
-        margin: 30px auto 0;
+        margin: 32px auto 0;
         width: 80%;
         height: 48px;
         font-size: 16px;
@@ -73,7 +88,7 @@ const LoginWrapper = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.74);
     z-index: 998;
   }
 `

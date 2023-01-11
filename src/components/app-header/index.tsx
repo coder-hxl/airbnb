@@ -1,5 +1,5 @@
 import React, { memo, useRef, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { shallowEqual, useSelector } from 'react-redux'
 import classNames from 'classnames'
 
 import HeaderWrapper, { HeaderPlaceholderWrapper } from './style'
@@ -12,9 +12,12 @@ import { ThemeProvider } from 'styled-components'
 import { useScrollPosition } from '@/hooks'
 
 const AppHeader = memo(() => {
-  const { headerConfig } = useSelector((state: RootState) => ({
-    headerConfig: state.main.headerConfig
-  }))
+  const { headerConfig } = useSelector(
+    (state: RootState) => ({
+      headerConfig: state.main.headerConfig
+    }),
+    shallowEqual
+  )
   const { isFixed, topAlpha } = headerConfig
 
   const [isSearch, setIsSearch] = useState(false)

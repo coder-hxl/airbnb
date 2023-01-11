@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { Input } from 'antd'
 
 import FormWrapper from './style'
@@ -8,11 +8,15 @@ import { IAnyObject } from '@/types/common'
 
 const Form = memo((props: IProps) => {
   const { formConfig, onChange } = props
-  const initFormData: IAnyObject = {}
-  formConfig.forEach((item) => {
-    initFormData[item.name] = ''
-  })
-  const [formData, setFormData] = useState(initFormData)
+  const [formData, setFormData] = useState<IAnyObject>({})
+
+  useEffect(() => {
+    const formData: IAnyObject = {}
+    formConfig.forEach((item) => {
+      formData[item.name] = ''
+    })
+    setFormData(formData)
+  }, [formConfig])
 
   function handleFormChange(
     e: React.ChangeEvent<HTMLInputElement>,
@@ -35,6 +39,7 @@ const Form = memo((props: IProps) => {
             className="item input-focused"
             key={item.name}
             placeholder={item.placeholder}
+            value={formData[item.name]}
             onChange={(e) => handleFormChange(e, item.name)}
           />
         ) : type === 'password' ? (
@@ -42,6 +47,7 @@ const Form = memo((props: IProps) => {
             className="item"
             key={item.name}
             placeholder={item.placeholder}
+            value={formData[item.name]}
             onChange={(e) => handleFormChange(e, item.name)}
           />
         ) : (

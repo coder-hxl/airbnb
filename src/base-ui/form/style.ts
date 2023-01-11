@@ -15,9 +15,19 @@ const FormWrapper = styled.div`
     }
   }
 
+  .ant-input-affix-wrapper {
+    &:hover {
+      border-color: #ebebeb;
+    }
+  }
+
   .ant-input-affix-wrapper-focused {
     border: 1px solid #008489;
     box-shadow: none;
+
+    &:hover {
+      border-color: #008489;
+    }
   }
 `
 

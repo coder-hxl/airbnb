@@ -8,15 +8,16 @@ class XLRequest {
   constructor(baseURL: string, timeout: number) {
     this.instance = axios.create({ baseURL, timeout })
 
-    this.instance.interceptors.response.use((res) => {
-      const { code, data } = res.data
+    this.instance.interceptors.response.use(
+      (res) => {
+        const { data } = res.data
 
-      if (code === 404) {
-        return console.log(code)
+        return data
+      },
+      (error) => {
+        return error
       }
-
-      return data
-    })
+    )
   }
 
   request<R = any>(config: AxiosRequestConfig): Promise<R> {

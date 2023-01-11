@@ -1,22 +1,27 @@
 import React, { memo, useCallback, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
-import getInputConfig from './config/input-config'
 import { changeLoginConfigAction } from '@/store/modules/main'
+import { fetchUserStateDataAction } from '@/store/modules/user'
+import getFormConfig from './config/form-config'
 import LoginWrapper from './style'
+import Form from '@/base-ui/form'
+import IconClose from '@/assets/svg/icon_close'
 
 import { RootState } from '@/store'
-import Form from '@/base-ui/form'
 import { IAnyObject } from '@/types/common'
-import { fetchUserStateDataAction } from '@/store/modules/user'
+import { IFormConfig } from './types'
 
 const AppLogin = memo(() => {
-  const { type } = useSelector((state: RootState) => ({
-    type: state.main.loginConfig.type
-  }))
+  const { type } = useSelector(
+    (state: RootState) => ({
+      type: state.main.loginConfig.type
+    }),
+    shallowEqual
+  )
   const [formData, setFormData] = useState<IAnyObject>({})
   const dispatch = useDispatch<any>()
-  const inputConfig = getInputConfig(type)
+  const [formConfig, setFormConfig] = useState<IFormConfig>([] as IFormConfig)
 
   useEffect(() => {
     const overflowValue = document.body.style.overflow
@@ -27,6 +32,16 @@ const AppLogin = memo(() => {
       document.body.style.overflow = overflowValue
     }
   }, [])
+
+  useEffect(() => {
+    const newFormConifg = getFormConfig(type)
+
+    setFormConfig(newFormConifg)
+  }, [type])
+
+  function handleCloseBtnClick() {
+    dispatch(changeLoginConfigAction({ showLogin: false, type: 'signUp' }))
+  }
 
   function handleTypeSwitchClick() {
     const newType = type === 'signUp' ? 'signIn' : 'signUp'
@@ -44,6 +59,12 @@ const AppLogin = memo(() => {
   return (
     <LoginWrapper>
       <div className="content">
+        <div className="close">
+          <span className="btn" onClick={handleCloseBtnClick}>
+            <IconClose height="1.4" width="1.4" color="#767676" />
+          </span>
+        </div>
+
         <div className="title">
           <div className="main-title">
             {type === 'signUp' ? '登录' : '注册'}爱彼迎
@@ -55,12 +76,13 @@ const AppLogin = memo(() => {
             </span>
           </div>
         </div>
-
         <div className="forms">
-          <Form formConfig={inputConfig} onChange={handleFormChange} />
+          <Form formConfig={formConfig} onChange={handleFormChange} />
 
           {type === 'signUp' && (
-            <div className="forget-password">忘记密码?</div>
+            <div className="forget-password">
+              <span>忘记密码?</span>
+            </div>
           )}
 
           <button

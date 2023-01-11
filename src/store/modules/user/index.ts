@@ -1,43 +1,64 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-import { signUpData, signInData } from '@/services/modules/user'
+import {
+  signUpData,
+  signInData,
+  getUserInfoById
+} from '@/services/modules/user'
+import { changeLoginConfigAction } from '../main'
+import localCache from '@/utils/cache'
 
 import { IAction } from '@/store/types'
-import { IUserState } from './types'
+import { IUserInfo, IUserState } from './types'
 import { IAnyObject } from '@/types/common'
 
 export const fetchUserStateDataAction = createAsyncThunk(
   'fetchUserStateDataAction',
-  (data: { type: 'signUp' | 'signIn'; formData: IAnyObject }, { dispatch }) => {
+  async (
+    data: { type: 'signUp' | 'signIn'; formData: IAnyObject },
+    { dispatch }
+  ) => {
     const { type, formData } = data
 
     if (type === 'signUp') {
-      signUpData(formData).then((res) => {
-        console.log(res)
-      })
+      const loginRes = await signUpData(formData)
+      const { id, token } = loginRes
+
+      localCache.setCache('token', token)
+      dispatch(changeLoginConfigAction({ showLogin: false, type: 'signUp' }))
+      dispatch(changeTokenAction(token))
+
+      const userInfoRes = await getUserInfoById(id)
+
+      localCache.setCache('userInfo', userInfoRes)
+      dispatch(changeUserInfoAction(userInfoRes))
     } else {
-      signInData(formData)
+      const signInRes = signInData(formData)
+
+      if (typeof signInRes === 'string') {
+        dispatch(changeLoginConfigAction({ showLogin: true, type: 'signUp' }))
+      }
     }
   }
 )
 
 const initialState: IUserState = {
-  userInfo: {},
-  token: ''
+  token: localCache.getCache('token'),
+  userInfo: localCache.getCache('userInfo') ?? {}
 }
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    changeUserStateAction(state, { payload }: IAction<IUserState>) {
-      const { userInfo, token } = payload
-
-      state.userInfo = userInfo
-      state.token = token
+    changeTokenAction(state, { payload }: IAction<string | undefined>) {
+      state.token = payload
+    },
+    changeUserInfoAction(state, { payload }: IAction<IUserInfo>) {
+      state.userInfo = payload
     }
   }
 })
 
-export const { changeUserStateAction } = userSlice.actions
+export const { changeTokenAction, changeUserInfoAction } = userSlice.actions
 export default userSlice.reducer

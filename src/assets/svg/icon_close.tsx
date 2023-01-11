@@ -1,7 +1,11 @@
 import React, { memo } from 'react'
 import styleStrToObject from './utils'
 
-const IconClose = memo(() => {
+import { IProps } from './types'
+
+const IconClose = memo((props: IProps) => {
+  const { width = 2, height = 2, color = 'rgb(255, 255, 255)' } = props
+
   return (
     <svg
       viewBox="0 0 24 24"
@@ -10,7 +14,7 @@ const IconClose = memo(() => {
       aria-label="关闭"
       focusable="false"
       style={styleStrToObject(
-        'height: 2em; width: 2em; display: block; fill: rgb(255, 255, 255);'
+        `height: ${height}em; width: ${width}em; display: block; fill: ${color};`
       )}
     >
       <path
