@@ -18,13 +18,8 @@ const Area = memo(() => {
 
   useEffect(() => {
     dispatch(fetchAreaDataAction(areaName ?? '', query.type))
-    dispatch(
-      changeHeaderConfigAction({
-        isFixed: true,
-        topAlpha: false,
-      })
-    )
-  }, [dispatch, areaName, query])
+    dispatch(changeHeaderConfigAction({ isFixed: true, topAlpha: false }))
+  }, [dispatch, areaName, query.type])
 
   return (
     <AreaWrapper>
