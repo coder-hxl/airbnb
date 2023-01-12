@@ -12,8 +12,8 @@ import { IAction } from '@/store/types'
 import { IUserInfo, IUserState } from './types'
 import { IAnyObject } from '@/types/common'
 
-export const fetchUserStateDataAction = createAsyncThunk(
-  'fetchUserStateDataAction',
+export const fetchLoginDataAction = createAsyncThunk(
+  'fetchLoginDataAction',
   async (
     data: { type: 'signUp' | 'signIn'; formData: IAnyObject },
     { dispatch }
@@ -24,14 +24,11 @@ export const fetchUserStateDataAction = createAsyncThunk(
       const loginRes = await signUpData(formData)
       const { id, token } = loginRes
 
-      localCache.setCache('token', token)
       dispatch(changeLoginConfigAction({ showLogin: false, type: 'signUp' }))
       dispatch(changeTokenAction(token))
 
-      const userInfoRes = await getUserInfoById(id)
-
-      localCache.setCache('userInfo', userInfoRes)
-      dispatch(changeUserInfoAction(userInfoRes))
+      // 获取用户信息
+      dispatch(fetchUserInfoDataAction(id))
     } else {
       const signInRes = signInData(formData)
 
@@ -39,6 +36,15 @@ export const fetchUserStateDataAction = createAsyncThunk(
         dispatch(changeLoginConfigAction({ showLogin: true, type: 'signUp' }))
       }
     }
+  }
+)
+
+export const fetchUserInfoDataAction = createAsyncThunk(
+  'fetchUserInfoDataAction',
+  async (userId: number, { dispatch }) => {
+    const userInfoRes = await getUserInfoById(userId)
+
+    dispatch(changeUserInfoAction(userInfoRes))
   }
 )
 
@@ -52,9 +58,11 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     changeTokenAction(state, { payload }: IAction<string | undefined>) {
+      localCache.setCache('token', payload)
       state.token = payload
     },
     changeUserInfoAction(state, { payload }: IAction<IUserInfo>) {
+      localCache.setCache('userInfo', payload)
       state.userInfo = payload
     }
   }

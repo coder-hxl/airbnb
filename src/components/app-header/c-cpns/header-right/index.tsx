@@ -4,7 +4,6 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 import { changeLoginConfigAction } from '@/store/modules/main'
 import { changeTokenAction, changeUserInfoAction } from '@/store/modules/user'
-import localCache from '@/utils/cache'
 import RightWrapper from './style'
 import IconAvatar from '@/assets/svg/icon_avatar'
 import IconGlobal from '@/assets/svg/icon_global'
@@ -47,8 +46,7 @@ const Right = memo(() => {
   }
 
   function handleExitLoginClcik() {
-    localCache.deleteCache('token', 'userInfo')
-    dispatch(changeTokenAction(undefined))
+    dispatch(changeTokenAction(''))
     dispatch(changeUserInfoAction({}))
     navgate('/')
   }

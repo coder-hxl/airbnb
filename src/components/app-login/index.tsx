@@ -2,7 +2,7 @@ import React, { memo, useCallback, useEffect, useState } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 import { changeLoginConfigAction } from '@/store/modules/main'
-import { fetchUserStateDataAction } from '@/store/modules/user'
+import { fetchLoginDataAction } from '@/store/modules/user'
 import getFormConfig from './config/form-config'
 import LoginWrapper from './style'
 import Form from '@/base-ui/form'
@@ -49,7 +49,7 @@ const AppLogin = memo(() => {
   }
 
   function handleLoginBtnClick(type: 'signUp' | 'signIn') {
-    dispatch(fetchUserStateDataAction({ type, formData }))
+    dispatch(fetchLoginDataAction({ type, formData }))
   }
 
   const handleFormChange = useCallback((value: IAnyObject) => {
