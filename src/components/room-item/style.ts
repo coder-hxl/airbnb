@@ -8,7 +8,7 @@ const RoomItemWrapper: IStyledComponent = styled.div`
   padding: 10px 8px;
   width: ${(props: IStyledProps) => props.itemWidth};
 
-  .cover {
+  .container {
     position: relative;
     padding-top: 60%;
     border-radius: 3px;

@@ -1,8 +1,6 @@
-import React, { memo, useRef, useState } from 'react'
+import React, { memo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Rating } from '@mui/material'
-import { Carousel } from 'antd'
-import type { CarouselRef } from 'antd/lib/carousel'
 import classNames from 'classnames'
 
 import RoomItemWrapper from './style'
@@ -17,14 +15,12 @@ const RoomItem = memo((props: IProps) => {
   const navigate = useNavigate()
 
   const [selectIndex, setSelectIndex] = useState(0)
-  const carouselRef = useRef<CarouselRef>({} as CarouselRef)
 
   function controlClickHandle(
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     isNext = true
   ) {
     event.stopPropagation()
-    isNext ? carouselRef.current.next() : carouselRef.current.prev()
 
     const length = itemData.pictureUrls?.length
     if (length !== undefined) {
@@ -41,7 +37,7 @@ const RoomItem = memo((props: IProps) => {
   }
 
   const pictureEl = (
-    <div className="cover">
+    <div className="container">
       <img className="picture" src={itemData.coverUrl} alt="" />
     </div>
   )
@@ -79,15 +75,13 @@ const RoomItem = memo((props: IProps) => {
         </Indicator>
       </div>
 
-      <Carousel ref={carouselRef} dots={false}>
-        {itemData.pictureUrls?.map((item) => {
-          return (
-            <div key={item} className="cover">
-              <img className="picture" src={item} alt="" />
-            </div>
-          )
-        })}
-      </Carousel>
+      <div className="container">
+        <img
+          className="picture"
+          src={itemData.pictureUrls?.[selectIndex]}
+          alt=""
+        />
+      </div>
     </div>
   )
 
