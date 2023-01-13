@@ -1,4 +1,4 @@
 export interface IHeaderCenterProps {
-  isSearch: boolean
-  onSearchClick: () => void
+  showSearch: boolean
+  onSearchBoxClick: (showSearch: boolean) => void
 }

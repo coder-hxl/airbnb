@@ -6,25 +6,42 @@ const SearchTabsWrapper = styled.div`
   justify-content: center;
 
   .item {
-    margin: 0 16px;
-    padding: 10px 0;
-    font-size: 16px;
-    color: ${(porps: IStyldProps) =>
-      porps.theme.isAlpha ? '#fff' : porps.theme.text.secondaryColor};
-
-    &:hover {
-      color: #a3a3a3;
-      border-bottom: 2px solid #afafa7;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 16px 0;
+    cursor: pointer;
 
     &.active {
-      border-bottom: 2px solid
-        ${(porps: IStyldProps) => (porps.theme.isAlpha ? '#fff' : '#000')};
-
-      :hover {
-        color: ${(porps: IStyldProps) =>
-          porps.theme.isAlpha ? '#fff' : porps.theme.text.secondaryColor};
+      .border {
+        width: 100%;
       }
+    }
+
+    &:hover:not(.active) {
+      .text {
+        color: #a3a3a3;
+      }
+
+      .border {
+        width: 100%;
+        background-color: #afafa7;
+      }
+    }
+
+    .text {
+      font-size: 16px;
+      color: ${(porps: IStyldProps) =>
+        porps.theme.isAlpha ? '#fff' : porps.theme.text.secondaryColor};
+    }
+
+    .border {
+      margin-top: 10px;
+      width: 0;
+      height: 2px;
+      background-color: ${(porps: IStyldProps) =>
+        porps.theme.isAlpha ? '#fff' : '#000'};
+      transition: all 200ms ease;
     }
   }
 `

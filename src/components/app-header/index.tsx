@@ -20,15 +20,15 @@ const AppHeader = memo(() => {
   )
   const { isFixed, topAlpha } = headerConfig
 
-  const [isSearch, setIsSearch] = useState(false)
+  const [showSearch, setShowSearch] = useState(false)
   const { scrollY } = useScrollPosition()
   const prevY = useRef(0)
 
   const isAlpha = topAlpha && scrollY === 0
 
   // 根据滚动距离设置是否展示搜索
-  if (!isSearch) prevY.current = scrollY
-  if (isSearch && Math.abs(scrollY - prevY.current) > 30) setIsSearch(false)
+  if (!showSearch) prevY.current = scrollY
+  if (showSearch && Math.abs(scrollY - prevY.current) > 30) setShowSearch(false)
 
   return (
     <ThemeProvider theme={{ isAlpha }}>
@@ -37,16 +37,16 @@ const AppHeader = memo(() => {
           <div className="top">
             <Left />
             <Center
-              isSearch={isAlpha || isSearch}
-              onSearchClick={() => setIsSearch(true)}
+              showSearch={isAlpha || showSearch}
+              onSearchBoxClick={(showSearch) => setShowSearch(showSearch)}
             />
             <Right />
           </div>
-          <HeaderPlaceholderWrapper isSearch={isSearch} />
+          <HeaderPlaceholderWrapper showSearch={showSearch} />
         </div>
 
-        {!isAlpha && isSearch && (
-          <div className="cover" onClick={() => setIsSearch(false)}></div>
+        {!isAlpha && showSearch && (
+          <div className="cover" onClick={() => setShowSearch(false)}></div>
         )}
       </HeaderWrapper>
     </ThemeProvider>

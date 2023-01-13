@@ -10,7 +10,7 @@ export type IStyledComponent = IDivStyledComponent<ISCProps>
 export type IStyledProps = IDivStyledProps<ISCProps, IHeaderTheme>
 
 interface IHPCStyledProps {
-  isSearch: boolean
+  showSearch: boolean
 }
 
 export type IHeaderPlaceholderCpn = IDivStyledComponent<IHPCStyledProps>

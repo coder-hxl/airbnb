@@ -17,7 +17,8 @@ const SearchTbas = memo((props: ISearchTabsProps) => {
             className={classNames('item', { active: index === tabIndex })}
             onClick={(e) => tabClick(index)}
           >
-            {item}
+            <div className="text">{item}</div>
+            <div className="border"></div>
           </div>
         )
       })}

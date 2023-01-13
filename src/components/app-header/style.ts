@@ -45,7 +45,7 @@ const HeaderWrapper: IStyledComponent = styled.div`
 
 export const HeaderPlaceholderWrapper: IHeaderPlaceholderCpn = styled.div`
   height: ${(props: IHeaderPlaceholderStyledProps) =>
-    props.isSearch ? '80px' : '0'};
+    props.showSearch ? '80px' : '0'};
   transition: height 250ms ease;
 `
 
