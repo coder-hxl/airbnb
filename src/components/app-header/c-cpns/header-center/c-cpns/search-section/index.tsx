@@ -1,7 +1,9 @@
 import React, { memo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { debounce } from 'underscore'
 
+import { warningFeedbackAction } from '@/store/modules/feedback'
 import IconSearchBar from '@/assets/svg/icon_search_bar'
 import SearchSectionWrapper from './style'
 
@@ -10,6 +12,7 @@ import { IAnyObject } from '@/types/common'
 
 const SearchSection = memo((props: ISearchSectionProps) => {
   const { section, onSearchClick } = props
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const initFormData: IAnyObject = {}
   section.forEach((item) => {
@@ -27,8 +30,12 @@ const SearchSection = memo((props: ISearchSectionProps) => {
 
   function handleSearchBarClick() {
     const city = formData['城市']
-    onSearchClick()
-    navigate(`/area/${city}?type=search`)
+    if (city) {
+      onSearchClick()
+      navigate(`/area/${city}?type=search`)
+    } else {
+      dispatch(warningFeedbackAction('请输入城市~'))
+    }
   }
 
   return (

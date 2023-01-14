@@ -7,6 +7,7 @@ import {
 } from '@/services/modules/user'
 import { changeLoginConfigAction } from '../main'
 import localCache from '@/utils/cache'
+import { successFeedbackAction } from '../feedback'
 
 import { IAction } from '@/store/types'
 import { IUserInfo, IUserState } from './types'
@@ -24,17 +25,19 @@ export const fetchLoginDataAction = createAsyncThunk(
       const loginRes = await signUpData(formData)
       const { id, token } = loginRes
 
+      dispatch(successFeedbackAction('登陆成功~'))
+
       dispatch(changeLoginConfigAction({ showLogin: false, type: 'signUp' }))
       dispatch(changeTokenAction(token))
 
       // 获取用户信息
       dispatch(fetchUserInfoDataAction(id))
     } else {
-      const signInRes = signInData(formData)
+      await signInData(formData)
 
-      if (typeof signInRes === 'string') {
-        dispatch(changeLoginConfigAction({ showLogin: true, type: 'signUp' }))
-      }
+      dispatch(successFeedbackAction('注册成功~'))
+
+      dispatch(changeLoginConfigAction({ showLogin: true, type: 'signUp' }))
     }
   }
 )

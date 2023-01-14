@@ -9,6 +9,7 @@ import { usePathChangeScrollTop } from './hooks'
 import AppHeader from './components/app-header'
 import AppFooter from './components/app-footer'
 import AppLogin from './components/app-login'
+import Feedback from './base-ui/feedback'
 
 const App = memo(() => {
   const { loginConfig } = useSelector(
@@ -30,6 +31,8 @@ const App = memo(() => {
       <AppFooter />
 
       {showLogin && <AppLogin />}
+
+      <Feedback />
     </div>
   )
 })

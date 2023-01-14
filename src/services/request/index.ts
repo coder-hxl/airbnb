@@ -15,7 +15,12 @@ class XLRequest {
         return data
       },
       (error) => {
-        return error
+        const { response } = error
+        const { message } = response.data
+
+        return {
+          errorMessage: message
+        }
       }
     )
   }
@@ -24,11 +29,11 @@ class XLRequest {
     return this.instance.request(config)
   }
 
-  get<R = any>(config: AxiosRequestConfig): Promise<R> {
+  get<R = any>(config: AxiosRequestConfig) {
     return this.request<R>({ ...config, method: 'GET' })
   }
 
-  post<R = any>(config: AxiosRequestConfig): Promise<R> {
+  post<R = any>(config: AxiosRequestConfig) {
     return this.request<R>({ ...config, method: 'POST' })
   }
 }

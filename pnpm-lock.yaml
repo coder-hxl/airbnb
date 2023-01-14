@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@ant-design/icons': ^5.0.0
   '@craco/craco': 7.0.0-alpha.9
   '@mui/material': ^5.10.13
   '@mui/styled-engine-sc': ^5.10.6
@@ -34,6 +35,7 @@ specifiers:
   web-vitals: ^2.1.4
 
 dependencies:
+  '@ant-design/icons': 5.0.0_biqbaboplfbrettd7655fr4n2y
   '@mui/material': 5.10.13_2zx2umvpluuhvlq44va5bta2da
   '@mui/styled-engine-sc': 5.10.6_eayongmbiubxhlvsbyl6yact2u
   '@reduxjs/toolkit': 1.9.0_k4ae6lp43ej6mezo3ztvx6pykq
@@ -87,6 +89,12 @@ packages:
       '@ctrl/tinycolor': 3.4.1
     dev: false
 
+  /@ant-design/colors/7.0.0:
+    resolution: {integrity: sha512-iVm/9PfGCbC0dSMBrz7oiEXZaaGH7ceU40OJEfKmyuzR9R5CRimJYPlRiFtMQGQcbNMea/ePcoIebi4ASGYXtg==}
+    dependencies:
+      '@ctrl/tinycolor': 3.4.1
+    dev: false
+
   /@ant-design/icons-svg/4.2.1:
     resolution: {integrity: sha512-EB0iwlKDGpG93hW8f85CTJTs4SvMX7tt5ceupvhALp1IF44SeUFOMhKUOYqpsoYWQKAOuTRDMqn75rEaKDp0Xw==}
     dev: false
@@ -99,6 +107,22 @@ packages:
       react-dom: '>=16.0.0'
     dependencies:
       '@ant-design/colors': 6.0.0
+      '@ant-design/icons-svg': 4.2.1
+      '@babel/runtime': 7.20.1
+      classnames: 2.3.2
+      rc-util: 5.24.4_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@ant-design/icons/5.0.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-dPUlZtsIffBrDyFwM+tuO4PWi1DPgGgd10ASistPhLpr1WyssadfhChWs/mICVkCm5PaRm/foMkE1x3xw4OPZw==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      react: '>=16.0.0'
+      react-dom: '>=16.0.0'
+    dependencies:
+      '@ant-design/colors': 7.0.0
       '@ant-design/icons-svg': 4.2.1
       '@babel/runtime': 7.20.1
       classnames: 2.3.2
