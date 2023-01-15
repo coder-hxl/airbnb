@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { debounce } from 'underscore'
 
-import { warningFeedbackAction } from '@/store/modules/feedback'
+import { openFeedbackAction } from '@/store/modules/feedback'
 import IconSearchBar from '@/assets/svg/icon_search_bar'
 import SearchSectionWrapper from './style'
 
@@ -34,7 +34,7 @@ const SearchSection = memo((props: ISearchSectionProps) => {
       onSearchClick()
       navigate(`/area/${city}?type=search`)
     } else {
-      dispatch(warningFeedbackAction('请输入城市~'))
+      dispatch(openFeedbackAction({ type: 'warning', content: '请输入城市~' }))
     }
   }
 

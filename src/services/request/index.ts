@@ -18,9 +18,7 @@ class XLRequest {
         const { response } = error
         const { message } = response.data
 
-        return {
-          errorMessage: message
-        }
+        throw new Error(message)
       }
     )
   }

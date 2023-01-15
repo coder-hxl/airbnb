@@ -3,45 +3,39 @@ import { createSlice } from '@reduxjs/toolkit'
 import { IAction } from '@/store/types'
 import { IFeedbackStore } from './types'
 
+let id = 0
 const initialState: IFeedbackStore = {
   isShow: false,
-  timeout: 2000,
-  type: '',
-  content: ''
+  timeout: 2500,
+  queue: []
 }
 
 const feedbackSlice = createSlice({
   name: 'feedback',
   initialState,
   reducers: {
-    successFeedbackAction(state, { payload }: IAction<string>) {
+    openFeedbackAction(
+      state,
+      {
+        payload
+      }: IAction<{ type: 'success' | 'error' | 'warning'; content: string }>
+    ) {
+      const { type, content } = payload
+
+      id++
       state.isShow = true
-      state.type = 'success'
-      state.content = payload
-    },
-    errorFeedbackAction(state, { payload }: IAction<string>) {
-      state.isShow = true
-      state.type = 'error'
-      state.content = payload
-    },
-    warningFeedbackAction(state, { payload }: IAction<string>) {
-      state.isShow = true
-      state.type = 'warning'
-      state.content = payload
+      state.queue.push({ id, type, content })
     },
     closeFeedbackAction(state) {
-      state.isShow = false
-      state.type = ''
-      state.content = ''
+      state.queue.shift()
+
+      if (!state.queue.length) {
+        state.isShow = false
+      }
     }
   }
 })
 
-export const {
-  successFeedbackAction,
-  errorFeedbackAction,
-  warningFeedbackAction,
-  closeFeedbackAction
-} = feedbackSlice.actions
+export const { openFeedbackAction, closeFeedbackAction } = feedbackSlice.actions
 
 export default feedbackSlice.reducer

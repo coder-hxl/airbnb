@@ -1,32 +1,36 @@
 import styled from 'styled-components'
 
 const FeedbackWrapper = styled.div`
-  .feedback-box {
+  .box {
     position: fixed;
-    top: 50px;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
-    padding: 12px 14px;
-    background-color: #fff;
-    border-radius: 6px;
-    box-shadow: 0 4px 16px 4px rgba(0, 0, 0, 0.2);
     z-index: 999;
 
-    .content {
-      margin-left: 6px;
+    .item {
+      display: flex;
+      margin-top: 8px;
+      padding: 12px 14px;
+      border-radius: 6px;
+      background-color: #fff;
+      box-shadow: 0 4px 16px 4px rgba(0, 0, 0, 0.2);
+
+      .content {
+        margin-left: 6px;
+      }
     }
   }
 
   .popup-appear,
   .popup-enter {
-    top: -50px;
+    opacity: 0;
   }
 
   .popup-enter-active,
   .popup-appear-active {
-    top: 50px;
-    transition: all 500ms ease;
+    opacity: 1;
+    transition: all 500ms ease-in;
   }
 
   .popup-exit {
@@ -35,7 +39,7 @@ const FeedbackWrapper = styled.div`
 
   .popup-exit-active {
     opacity: 0;
-    transition: all 500ms ease;
+    transition: all 500ms ease-in;
   }
 `
 

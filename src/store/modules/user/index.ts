@@ -7,7 +7,7 @@ import {
 } from '@/services/modules/user'
 import { changeLoginConfigAction } from '../main'
 import localCache from '@/utils/cache'
-import { successFeedbackAction } from '../feedback'
+import { openFeedbackAction } from '../feedback'
 
 import { IAction } from '@/store/types'
 import { IUserInfo, IUserState } from './types'
@@ -25,7 +25,7 @@ export const fetchLoginDataAction = createAsyncThunk(
       const loginRes = await signUpData(formData)
       const { id, token } = loginRes
 
-      dispatch(successFeedbackAction('登陆成功~'))
+      dispatch(openFeedbackAction({ type: 'success', content: '登陆成功~' }))
 
       dispatch(changeLoginConfigAction({ showLogin: false, type: 'signUp' }))
       dispatch(changeTokenAction(token))
@@ -35,7 +35,7 @@ export const fetchLoginDataAction = createAsyncThunk(
     } else {
       await signInData(formData)
 
-      dispatch(successFeedbackAction('注册成功~'))
+      dispatch(openFeedbackAction({ type: 'success', content: '注册成功~' }))
 
       dispatch(changeLoginConfigAction({ showLogin: true, type: 'signUp' }))
     }
