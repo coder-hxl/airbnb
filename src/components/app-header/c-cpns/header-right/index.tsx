@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 import { changeLoginConfigAction } from '@/store/modules/main'
-import { changeTokenAction, changeUserInfoAction } from '@/store/modules/user'
+import { changeTokenAction, changeUserInfoAction } from '@/store/modules/login'
 import { openFeedbackAction } from '@/store/modules/feedback'
 import RightWrapper from './style'
 import IconAvatar from '@/assets/svg/icon_avatar'
@@ -19,8 +19,8 @@ const Right = memo(() => {
   const [showPanel, setShowPanel] = useState(false)
   const { token, userInfo } = useSelector(
     (state: RootState) => ({
-      token: state.user.token,
-      userInfo: state.user.userInfo
+      token: state.login.token,
+      userInfo: state.login.userInfo
     }),
     shallowEqual
   )
@@ -52,6 +52,11 @@ const Right = memo(() => {
     dispatch(openFeedbackAction({ type: 'success', content: '退出成功~' }))
 
     navgate('/')
+  }
+
+  function handleAccountClick() {
+    const { id } = userInfo
+    navgate(`user/${id}`)
   }
 
   return (
@@ -101,7 +106,9 @@ const Right = memo(() => {
                 </div>
               </>
             ) : (
-              <div className="item">账号</div>
+              <div className="item" onClick={handleAccountClick}>
+                账号
+              </div>
             )}
 
             <div className="partition"></div>

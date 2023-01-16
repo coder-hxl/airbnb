@@ -5,7 +5,7 @@ const LoginWrapper = styled.div`
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -60%);
     padding: 50px 32px 46px;
     width: 560px;
     background-color: #fff;

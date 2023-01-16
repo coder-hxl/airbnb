@@ -3,12 +3,14 @@ import { useDispatch } from 'react-redux'
 import { useParams, useSearchParams } from 'react-router-dom'
 
 import { fetchAreaDataAction } from '@/store/modules/area/actions'
-
+import {
+  changeHeaderConfigAction,
+  changeFooterConfigAction
+} from '@/store/modules/main'
 import AreaWrapper from './style'
 import AreaFilter from './c-cpn/area-filter'
 import AreaPagination from './c-cpn/area-pagination'
 import AreaRooms from './c-cpn/area-rooms'
-import { changeHeaderConfigAction } from '@/store/modules/main'
 
 const Area = memo(() => {
   const dispatch = useDispatch<any>()
@@ -19,6 +21,7 @@ const Area = memo(() => {
   useEffect(() => {
     dispatch(fetchAreaDataAction(areaName ?? '', query.type))
     dispatch(changeHeaderConfigAction({ isFixed: true, topAlpha: false }))
+    dispatch(changeFooterConfigAction({ showFooter: false }))
   }, [dispatch, areaName, query.type])
 
   return (

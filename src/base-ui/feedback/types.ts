@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 const FeedbackWrapper = styled.div`
-  .box {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
 
+  .box {
     .item {
       display: flex;
       margin-top: 8px;

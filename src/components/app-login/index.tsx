@@ -2,7 +2,7 @@ import React, { memo, useCallback, useEffect, useState } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 import { changeLoginConfigAction } from '@/store/modules/main'
-import { fetchLoginDataAction } from '@/store/modules/user'
+import { fetchLoginDataAction } from '@/store/modules/login'
 import getFormConfig from './config/form-config'
 import LoginWrapper from './style'
 import Form from '@/base-ui/form'
@@ -13,9 +13,10 @@ import { IAnyObject } from '@/types/common'
 import { IFormConfig } from './types'
 
 const AppLogin = memo(() => {
-  const { type } = useSelector(
+  const { showLogin, type } = useSelector(
     (state: RootState) => ({
-      type: state.main.loginConfig.type
+      type: state.main.loginConfig.type,
+      showLogin: state.main.loginConfig.showLogin
     }),
     shallowEqual
   )
@@ -26,12 +27,15 @@ const AppLogin = memo(() => {
   useEffect(() => {
     const overflowValue = document.body.style.overflow
 
-    document.body.style.overflow = 'hidden'
-
-    return () => {
-      document.body.style.overflow = overflowValue
+    if (showLogin) {
+      document.body.style.overflow = 'hidden'
     }
-  }, [])
+    return () => {
+      if (showLogin) {
+        document.body.style.overflow = overflowValue
+      }
+    }
+  }, [showLogin])
 
   useEffect(() => {
     const newFormConifg = getFormConfig(type)
@@ -56,7 +60,7 @@ const AppLogin = memo(() => {
     setFormData(value)
   }, [])
 
-  return (
+  return showLogin ? (
     <LoginWrapper>
       <div className="content">
         <div className="close">
@@ -96,7 +100,7 @@ const AppLogin = memo(() => {
 
       <div className="cover"></div>
     </LoginWrapper>
-  )
+  ) : null
 })
 
 export default AppLogin

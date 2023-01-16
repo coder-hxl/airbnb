@@ -1,11 +1,17 @@
 import React, { memo } from 'react'
+import { useSelector } from 'react-redux'
 
 import footer from '@/assets/data/footer.json'
 
 import FooterWrapper from './style'
+import { RootState } from '@/store'
 
 const AppFooter = memo(() => {
-  return (
+  const { showFooter } = useSelector((state: RootState) => ({
+    showFooter: state.main.footerConfig.showFooter
+  }))
+
+  return showFooter ? (
     <FooterWrapper>
       <div className="content">
         <div className="desc">
@@ -28,7 +34,7 @@ const AppFooter = memo(() => {
         </p>
       </div>
     </FooterWrapper>
-  )
+  ) : null
 })
 
 export default AppFooter

@@ -4,8 +4,9 @@ import homeReducer from './modules/home'
 import areaReducer from './modules/area'
 import roomReducer from './modules/room'
 import mainReducer from './modules/main'
-import userReducer from './modules/user'
+import loginReducer from './modules/login'
 import feedbackReducer from './modules/feedback'
+import userReducer from './modules/user'
 
 const store = configureStore({
   reducer: {
@@ -13,8 +14,9 @@ const store = configureStore({
     area: areaReducer,
     room: roomReducer,
     main: mainReducer,
-    user: userReducer,
-    feedback: feedbackReducer
+    login: loginReducer,
+    feedback: feedbackReducer,
+    user: userReducer
   }
 })
 

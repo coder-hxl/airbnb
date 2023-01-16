@@ -4,16 +4,19 @@ import { useParams } from 'react-router-dom'
 
 import RoomWrapper from './style'
 
-import RoomPictures from './c-cpns/room-pictures'
-import RoomInfos from './c-cpns/room-infos'
-
-import { RootState } from '@/store'
-import { changeHeaderConfigAction } from '@/store/modules/main'
 import {
   fetchRoomDataAction,
   fetchReviewDataAction
 } from '@/store/modules/room'
+import {
+  changeFooterConfigAction,
+  changeHeaderConfigAction
+} from '@/store/modules/main'
 import { isEmptyO } from '@/utils'
+import RoomPictures from './c-cpns/room-pictures'
+import RoomInfos from './c-cpns/room-infos'
+
+import { RootState } from '@/store'
 
 const Room = memo(() => {
   const { roomId } = useParams()
@@ -30,6 +33,7 @@ const Room = memo(() => {
     dispatch(fetchRoomDataAction(roomId ?? ''))
     dispatch(fetchReviewDataAction({ roomId: Number(roomId) }))
     dispatch(changeHeaderConfigAction({ isFixed: false, topAlpha: false }))
+    dispatch(changeFooterConfigAction({ showFooter: true }))
   }, [dispatch, roomId])
 
   return (

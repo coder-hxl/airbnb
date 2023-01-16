@@ -6,6 +6,7 @@ const AreaPaginactionWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
+  padding-bottom: 30px;
   color: ${(porps: IStyledProps) => porps.theme.text.secondaryColor};
 
   .MuiSvgIcon-fontSizeMedium {

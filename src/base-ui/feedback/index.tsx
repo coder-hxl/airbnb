@@ -35,38 +35,36 @@ const Feedback = memo(() => {
     }
   }, [dispatch, timeout, setSumLength, queue.length])
 
-  return (
+  return isShow ? (
     <FeedbackWrapper>
-      {isShow && (
-        <TransitionGroup className="box">
-          {queue.map(({ id, type, content }) => {
-            return (
-              <CSSTransition
-                key={id}
-                classNames="popup"
-                timeout={500}
-                in={isShow}
-                appear
-              >
-                <div className="item">
-                  <div className="icon">
-                    {type === 'success' ? (
-                      <CheckCircleFilled style={{ color: '#52c41a' }} />
-                    ) : type === 'error' ? (
-                      <CloseCircleFilled style={{ color: '#ff4d4f' }} />
-                    ) : (
-                      <InfoCircleFilled style={{ color: '#faad14' }} />
-                    )}
-                  </div>
-                  <div className="content">{content}</div>
+      <TransitionGroup className="box">
+        {queue.map(({ id, type, content }) => {
+          return (
+            <CSSTransition
+              key={id}
+              classNames="popup"
+              timeout={500}
+              in={isShow}
+              appear
+            >
+              <div className="item">
+                <div className="icon">
+                  {type === 'success' ? (
+                    <CheckCircleFilled style={{ color: '#52c41a' }} />
+                  ) : type === 'error' ? (
+                    <CloseCircleFilled style={{ color: '#ff4d4f' }} />
+                  ) : (
+                    <InfoCircleFilled style={{ color: '#faad14' }} />
+                  )}
                 </div>
-              </CSSTransition>
-            )
-          })}
-        </TransitionGroup>
-      )}
+                <div className="content">{content}</div>
+              </div>
+            </CSSTransition>
+          )
+        })}
+      </TransitionGroup>
     </FeedbackWrapper>
-  )
+  ) : null
 })
 
 export default Feedback
