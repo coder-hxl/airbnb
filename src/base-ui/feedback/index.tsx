@@ -50,11 +50,17 @@ const Feedback = memo(() => {
               <div className="item">
                 <div className="icon">
                   {type === 'success' ? (
-                    <CheckCircleFilled style={{ color: '#52c41a' }} />
+                    <CheckCircleFilled
+                      style={{ color: '#52c41a', fontSize: '20px' }}
+                    />
                   ) : type === 'error' ? (
-                    <CloseCircleFilled style={{ color: '#ff4d4f' }} />
+                    <CloseCircleFilled
+                      style={{ color: '#ff4d4f', fontSize: '20px' }}
+                    />
                   ) : (
-                    <InfoCircleFilled style={{ color: '#faad14' }} />
+                    <InfoCircleFilled
+                      style={{ color: '#faad14', fontSize: '20px' }}
+                    />
                   )}
                 </div>
                 <div className="content">{content}</div>

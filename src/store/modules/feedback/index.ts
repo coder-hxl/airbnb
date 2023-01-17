@@ -6,7 +6,7 @@ import { IFeedbackStore } from './types'
 let id = 0
 const initialState: IFeedbackStore = {
   isShow: false,
-  timeout: 2500,
+  timeout: 3000,
   queue: []
 }
 
