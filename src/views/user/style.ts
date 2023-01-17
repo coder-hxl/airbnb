@@ -8,7 +8,7 @@ const userWrapper = styled.div`
 
   .left {
     flex: 1;
-    padding: 30px 20px;
+    padding: 30px 20px 60px;
     border: 1px solid #dddddd;
     border-radius: 8px;
 
@@ -20,6 +20,8 @@ const userWrapper = styled.div`
       .avatar {
         width: 120px;
         height: 120px;
+        border-radius: 50%;
+        overflow: hidden;
 
         img {
           height: 100%;
@@ -31,6 +33,10 @@ const userWrapper = styled.div`
         font-weight: 600;
         text-decoration: underline;
         cursor: pointer;
+      }
+
+      .ant-upload-list {
+        display: none;
       }
     }
 

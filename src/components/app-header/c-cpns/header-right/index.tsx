@@ -79,10 +79,12 @@ const Right = memo(() => {
       </div>
 
       <div className="profile" onClick={handleProfileClick}>
-        <div className="icons">
+        <div className="box">
           <IconMenu />
           {userInfo?.avatarUrl ? (
-            <img src={userInfo.avatarUrl} alt="" />
+            <div className="avatar">
+              <img src={userInfo.avatarUrl} alt="" />
+            </div>
           ) : (
             <IconAvatar />
           )}

@@ -38,12 +38,24 @@ const RightWrapper = styled.div`
     background-color: ${(props: IRightStyleProps) =>
       props.theme.isAlpha ? '#fff' : ' '};
 
-    .icons {
+    .box {
       display: flex;
+      justify-content: space-around;
       align-items: center;
       width: 100%;
       height: 100%;
       cursor: pointer;
+
+      .avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        img {
+          height: 100%;
+        }
+      }
     }
 
     .panel {

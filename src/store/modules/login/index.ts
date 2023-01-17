@@ -29,7 +29,7 @@ export const fetchLoginDataAction = createAsyncThunk(
       dispatch(changeTokenAction(token))
 
       // 获取登陆用户信息
-      dispatch(fetchUserInfoDataAction(id))
+      dispatch(fetchLoginInfoDataAction(id))
     } else {
       await signInData(formData)
 
@@ -40,8 +40,8 @@ export const fetchLoginDataAction = createAsyncThunk(
   }
 )
 
-export const fetchUserInfoDataAction = createAsyncThunk(
-  'fetchUserInfoDataAction',
+export const fetchLoginInfoDataAction = createAsyncThunk(
+  'fetchLoginInfoDataAction',
   async (userId: number, { dispatch }) => {
     const { userInfo } = await getUserInfoById(userId)
     dispatch(changeUserInfoAction(userInfo))
