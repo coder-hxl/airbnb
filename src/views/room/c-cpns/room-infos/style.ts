@@ -54,6 +54,8 @@ const RoomInfosWrapper = styled.div`
         .avatar {
           width: 56px;
           height: 56px;
+          border-radius: 50%;
+          overflow: hidden;
 
           img {
             width: 100%;
@@ -125,6 +127,8 @@ const RoomInfosWrapper = styled.div`
           .avatar {
             width: 46px;
             height: 46px;
+            border-radius: 50%;
+            overflow: hidden;
 
             img {
               width: 100%;
