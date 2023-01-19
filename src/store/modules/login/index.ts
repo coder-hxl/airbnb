@@ -3,8 +3,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { signUpData, signInData } from '@/services/modules/login'
 import { getUserInfoById } from '@/services/modules/user'
 import { changeLoginConfigAction } from '../main'
-import localCache from '@/utils/cache'
 import { openFeedbackAction } from '../feedback'
+import localCache from '@/utils/cache'
 
 import { IAction } from '@/store/types'
 import { ILoginState } from './types'
@@ -18,24 +18,37 @@ export const fetchLoginDataAction = createAsyncThunk(
     { dispatch }
   ) => {
     const { type, formData } = data
+    const isSignUp = type === 'signUp'
 
-    if (type === 'signUp') {
-      const loginRes = await signUpData(formData)
-      const { id, token } = loginRes
+    try {
+      if (isSignUp) {
+        const loginRes = await signUpData(formData)
+        const { id, token } = loginRes
 
-      dispatch(openFeedbackAction({ type: 'success', content: '登陆成功~' }))
+        dispatch(changeTokenAction(token))
 
-      dispatch(changeLoginConfigAction({ showLogin: false, type: 'signUp' }))
-      dispatch(changeTokenAction(token))
+        // 获取登录用户信息
+        dispatch(fetchLoginInfoDataAction(id))
 
-      // 获取登陆用户信息
-      dispatch(fetchLoginInfoDataAction(id))
-    } else {
-      await signInData(formData)
+        // 刷新页面
+        window.history.go(0)
+      } else {
+        await signInData(formData)
+      }
 
-      dispatch(openFeedbackAction({ type: 'success', content: '注册成功~' }))
+      // 其他操作
+      dispatch(
+        openFeedbackAction({
+          type: 'success',
+          content: isSignUp ? '登陆成功~' : '注册成功, 请进行登录~'
+        })
+      )
 
-      dispatch(changeLoginConfigAction({ showLogin: true, type: 'signUp' }))
+      dispatch(
+        changeLoginConfigAction({ showLogin: !isSignUp, type: 'signUp' })
+      )
+    } catch (error: any) {
+      dispatch(openFeedbackAction({ type: 'error', content: error.message }))
     }
   }
 )
