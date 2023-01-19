@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import UserInfoWrapper from './style'
 
-import { yearTimeFormat } from '@/utils'
+import { yearTimeFormat } from '@/utils/time-format'
 
 import IProps from './types'
 

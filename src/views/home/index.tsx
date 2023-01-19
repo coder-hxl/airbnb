@@ -7,8 +7,7 @@ import {
   changeFooterConfigAction,
   changeHeaderConfigAction
 } from '@/store/modules/main'
-import { isEmptyO } from '@/utils'
-
+import { isEmptyO } from '@/utils/is-empty'
 import HomeWrapper from './style'
 import HomeBanner from './c-cpns/home-banner'
 import HomeSectionV1 from './c-cpns/home-section-v1'
@@ -49,14 +48,14 @@ const Home = memo(() => {
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
-        {isEmptyO(wonderfulPlaceInfo) && (
+        {!isEmptyO(wonderfulPlaceInfo) && (
           <HomeSectionV2 infoData={wonderfulPlaceInfo} />
         )}
-        {isEmptyO(hotPlaceInfo) && <HomeSectionV2 infoData={hotPlaceInfo} />}
-        {isEmptyO(longForInfo) && <HomeLongFor infoData={longForInfo} />}
-        {isEmptyO(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo} />}
-        {isEmptyO(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} />}
-        {isEmptyO(plusInfo) && <HomeSectionV3 infoData={plusInfo} />}
+        {!isEmptyO(hotPlaceInfo) && <HomeSectionV2 infoData={hotPlaceInfo} />}
+        {!isEmptyO(longForInfo) && <HomeLongFor infoData={longForInfo} />}
+        {!isEmptyO(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo} />}
+        {!isEmptyO(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} />}
+        {!isEmptyO(plusInfo) && <HomeSectionV3 infoData={plusInfo} />}
       </div>
     </HomeWrapper>
   )

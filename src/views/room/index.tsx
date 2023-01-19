@@ -12,7 +12,7 @@ import {
   changeFooterConfigAction,
   changeHeaderConfigAction
 } from '@/store/modules/main'
-import { isEmptyO } from '@/utils'
+import { isEmptyO } from '@/utils/is-empty'
 import RoomPictures from './c-cpns/room-pictures'
 import RoomInfos from './c-cpns/room-infos'
 
@@ -38,10 +38,10 @@ const Room = memo(() => {
 
   return (
     <RoomWrapper>
-      {isEmptyO(roomInfo) && (
+      {!isEmptyO(roomInfo) && (
         <RoomPictures pictures={roomInfo.pictureUrls ?? []} />
       )}
-      {isEmptyO({ ...roomInfo, ...review }) && (
+      {!isEmptyO({ ...roomInfo, ...review }) && (
         <RoomInfos itemData={roomInfo} review={review} />
       )}
     </RoomWrapper>

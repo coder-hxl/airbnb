@@ -7,7 +7,7 @@ import {
   changeFooterConfigAction
 } from '@/store/modules/main'
 import { fetchUserInfoDataAction } from '@/store/modules/user'
-import { isEmptyO } from '@/utils'
+import { isEmptyO } from '@/utils/is-empty'
 import UserWrapper from './style'
 import UserVerify from './c-cpns/user-verify'
 import UserInfo from './c-cpns/user-info'
@@ -30,7 +30,7 @@ const User = memo(() => {
 
   return (
     <UserWrapper>
-      {isEmptyO(userInfo) && (
+      {!isEmptyO(userInfo) && (
         <>
           <UserVerify userInfo={userInfo} options={options} />
           <UserInfo userInfo={userInfo} options={options} />

@@ -3,11 +3,11 @@ import { useDispatch } from 'react-redux'
 import { Rating, Pagination } from '@mui/material'
 
 import { fetchReviewDataAction } from '@/store/modules/room'
+import { fullTimeFormat } from '@/utils/time-format'
 import RoomInfosWrapper from './style'
 import IconAvatar from '@/assets/svg/icon_avatar'
 
 import { IProps } from './types'
-import { fullTimeFormat } from '@/utils'
 
 const RoomInfos = memo((props: IProps) => {
   const { itemData, review } = props

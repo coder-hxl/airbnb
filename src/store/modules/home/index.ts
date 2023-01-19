@@ -6,8 +6,8 @@ import {
   getHomeGoodPriceData,
   getWonderfulPlaceData,
   getLongForData,
-  getPlusData,
-} from '@/services'
+  getPlusData
+} from '@/services/modules/home'
 
 import { IAction } from '@/store/types'
 import { IHomeState, IHomeAreaV2, ILongForInfo, IHomeAreaV1 } from './types'
@@ -47,7 +47,7 @@ const initialState: IHomeState = {
   hotPlaceInfo: {},
   wonderfulPlaceInfo: {},
   longForInfo: {},
-  plusInfo: {},
+  plusInfo: {}
 }
 
 const homeSlice = createSlice({
@@ -71,8 +71,8 @@ const homeSlice = createSlice({
     },
     changePlusAction(state, { payload }: IAction<IHomeAreaV2>) {
       state.plusInfo = payload
-    },
-  },
+    }
+  }
 })
 
 export const {
@@ -81,7 +81,7 @@ export const {
   changeHotPlaceInfoAction,
   changeWonderfulPlaceAction,
   changeLongForAction,
-  changePlusAction,
+  changePlusAction
 } = homeSlice.actions
 
 export default homeSlice.reducer
