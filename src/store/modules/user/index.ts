@@ -8,6 +8,9 @@ import { IUserState } from './types'
 export const fetchUserInfoDataAction = createAsyncThunk(
   'fetchUserInfoDataAction',
   async (userId: number | string, { dispatch }) => {
+    // 清除旧数据
+    dispatch(changeUserStoreAction({ userInfo: {}, options: {} }))
+
     const userInfoRes = await getUserInfoById(userId)
 
     dispatch(changeUserStoreAction(userInfoRes))
