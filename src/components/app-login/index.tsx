@@ -10,7 +10,7 @@ import IconClose from '@/assets/svg/icon_close'
 
 import { RootState } from '@/store'
 import { IAnyObject } from '@/types/common'
-import { IFormConfig } from './types'
+import { IFormConfig } from '@/base-ui/form/types'
 
 const AppLogin = memo(() => {
   const { showLogin, type } = useSelector(
@@ -20,9 +20,9 @@ const AppLogin = memo(() => {
     }),
     shallowEqual
   )
-  const [formData, setFormData] = useState<IAnyObject>({})
   const dispatch = useDispatch<any>()
   const [formConfig, setFormConfig] = useState<IFormConfig>([] as IFormConfig)
+  const [formData, setFormData] = useState({})
 
   useEffect(() => {
     const overflowValue = document.body.style.overflow
@@ -39,8 +39,13 @@ const AppLogin = memo(() => {
 
   useEffect(() => {
     const newFormConifg = getFormConfig(type)
+    const newFormData = newFormConifg.reduce((pre, value) => {
+      const name = value.name
+      return { ...pre, [name]: '' }
+    }, {})
 
     setFormConfig(newFormConifg)
+    setFormData(newFormData)
   }, [type])
 
   function handleCloseBtnClick() {
@@ -81,7 +86,11 @@ const AppLogin = memo(() => {
           </div>
         </div>
         <div className="forms">
-          <Form formConfig={formConfig} onChange={handleFormChange} />
+          <Form
+            formConfig={formConfig}
+            formData={formData}
+            onChange={handleFormChange}
+          />
 
           {type === 'signUp' && (
             <div className="forget-password">

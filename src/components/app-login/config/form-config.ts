@@ -1,5 +1,7 @@
+import { IFormConfig } from '@/base-ui/form/types'
+
 export default function getFormConfig(type: 'signUp' | 'signIn') {
-  const formConfig = [
+  const formConfig: IFormConfig = [
     { name: 'name', type: 'text', placeholder: '账号' },
     { name: 'password', type: 'password', placeholder: '密码' }
   ]

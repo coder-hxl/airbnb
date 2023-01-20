@@ -1,32 +1,21 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo } from 'react'
 import { Input } from 'antd'
 
 import FormWrapper from './style'
 
 import { IProps } from './types'
-import { IAnyObject } from '@/types/common'
 
 const Form = memo((props: IProps) => {
-  const { formConfig, onChange } = props
-  const [formData, setFormData] = useState<IAnyObject>({})
-
-  useEffect(() => {
-    const formData: IAnyObject = {}
-    formConfig.forEach((item) => {
-      formData[item.name] = ''
-    })
-    setFormData(formData)
-  }, [formConfig])
+  const { formConfig, formData, onChange } = props
 
   function handleFormChange(
     e: React.ChangeEvent<HTMLInputElement>,
     name: string
   ) {
     const inputValue = e.target.value
-    const newFormValue = { ...formData, [name]: inputValue }
+    const newFormData = { ...formData, [name]: inputValue }
 
-    setFormData(newFormValue)
-    onChange(newFormValue)
+    onChange(newFormData)
   }
 
   return (
