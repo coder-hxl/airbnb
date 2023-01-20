@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-import { getUserInfoById } from '@/services/modules/user'
+import { getUserInfoById, updateUserInfo } from '@/services/modules/user'
+import { changeLoginUserInfoAction } from '../login'
 
 import { IAction } from '@/store/types'
-import { IUserState } from './types'
+import { IUserInfo, IUserState } from './types'
 
 export const fetchUserInfoDataAction = createAsyncThunk(
   'fetchUserInfoDataAction',
@@ -14,6 +15,18 @@ export const fetchUserInfoDataAction = createAsyncThunk(
     const userInfoRes = await getUserInfoById(userId)
 
     dispatch(changeUserStoreAction(userInfoRes))
+  }
+)
+
+export const updateUserInfoDataAction = createAsyncThunk(
+  'updateUserInfoDataAction',
+  async (data: { userId: number; formData: IUserInfo }, { dispatch }) => {
+    const { userId, formData } = data
+    await updateUserInfo(formData)
+
+    const userInfoRes = await getUserInfoById(userId)
+    dispatch(changeUserStoreAction(userInfoRes))
+    dispatch(changeLoginUserInfoAction(userInfoRes.userInfo))
   }
 )
 

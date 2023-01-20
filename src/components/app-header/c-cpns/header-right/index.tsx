@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 import { changeLoginConfigAction } from '@/store/modules/main'
-import { changeTokenAction, changeUserInfoAction } from '@/store/modules/login'
+import {
+  changeTokenAction,
+  changeLoginUserInfoAction
+} from '@/store/modules/login'
 import { openFeedbackAction } from '@/store/modules/feedback'
 import RightWrapper from './style'
 import IconAvatar from '@/assets/svg/icon_avatar'
@@ -48,7 +51,7 @@ const Right = memo(() => {
 
   function handleExitLoginClcik() {
     dispatch(changeTokenAction(''))
-    dispatch(changeUserInfoAction({}))
+    dispatch(changeLoginUserInfoAction({}))
     dispatch(openFeedbackAction({ type: 'success', content: '退出成功~' }))
 
     navgate('/')

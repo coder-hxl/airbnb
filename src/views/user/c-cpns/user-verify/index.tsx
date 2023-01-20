@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { Upload } from 'antd'
 import ImgCrop from 'antd-img-crop'
 
-import { fetchLoginInfoDataAction } from '@/store/modules/login'
+import { fetchLoginUserInfoDataAction } from '@/store/modules/login'
 import { fetchUserInfoDataAction } from '@/store/modules/user'
 import { openFeedbackAction } from '@/store/modules/feedback'
 import localCache from '@/utils/cache'
@@ -54,7 +54,7 @@ const UserVerify = memo((props: IProps) => {
           openFeedbackAction({ type: 'success', content: '更新图片成功~' })
         )
         dispatch(fetchUserInfoDataAction(userInfo.id ?? ''))
-        dispatch(fetchLoginInfoDataAction(Number(userInfo.id)))
+        dispatch(fetchLoginUserInfoDataAction(Number(userInfo.id)))
       }
     },
     []

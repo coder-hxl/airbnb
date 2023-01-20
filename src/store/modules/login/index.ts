@@ -28,7 +28,7 @@ export const fetchLoginDataAction = createAsyncThunk(
         dispatch(changeTokenAction(token))
 
         // 获取登录用户信息
-        dispatch(fetchLoginInfoDataAction(id))
+        dispatch(fetchLoginUserInfoDataAction(id))
 
         // 刷新页面
         window.history.go(0)
@@ -53,11 +53,11 @@ export const fetchLoginDataAction = createAsyncThunk(
   }
 )
 
-export const fetchLoginInfoDataAction = createAsyncThunk(
-  'fetchLoginInfoDataAction',
+export const fetchLoginUserInfoDataAction = createAsyncThunk(
+  'fetchLoginUserInfoDataAction',
   async (userId: number, { dispatch }) => {
     const { userInfo } = await getUserInfoById(userId)
-    dispatch(changeUserInfoAction(userInfo))
+    dispatch(changeLoginUserInfoAction(userInfo))
   }
 )
 
@@ -74,12 +74,13 @@ const loginSlice = createSlice({
       localCache.setCache('token', payload)
       state.token = payload
     },
-    changeUserInfoAction(state, { payload }: IAction<IUserInfo>) {
+    changeLoginUserInfoAction(state, { payload }: IAction<IUserInfo>) {
       localCache.setCache('userInfo', payload)
       state.userInfo = payload
     }
   }
 })
 
-export const { changeTokenAction, changeUserInfoAction } = loginSlice.actions
+export const { changeTokenAction, changeLoginUserInfoAction } =
+  loginSlice.actions
 export default loginSlice.reducer
