@@ -1,11 +1,22 @@
 import xLRequest from '..'
 
-import { IUserInfo, IUserState } from '@/store/modules/user/types'
+import { IUserInfo, IUserOptions } from '@/store/modules/user/types'
+import { IMapTypeObject } from '@/types/common'
 
-export function getUserInfoById(userId: number | string) {
-  return xLRequest.get<IUserState>({ url: `/user/${userId}` })
+export interface IUserData {
+  userInfo: IUserInfo
+  options: IUserOptions
 }
 
-export function updateUserInfo(data: IUserInfo) {
+export type IUserUpdateData = IMapTypeObject<
+  IUserInfo,
+  'id' | 'name' | 'avatarUrl' | 'createAt'
+>
+
+export function getUserInfoById(userId: number | string) {
+  return xLRequest.get<IUserData>({ url: `/user/${userId}` })
+}
+
+export function updateUserInfo(data: IUserUpdateData) {
   return xLRequest.request({ method: 'PATCH', url: '/user', data })
 }

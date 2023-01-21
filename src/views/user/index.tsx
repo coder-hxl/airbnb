@@ -13,9 +13,10 @@ import UserVerify from './c-cpns/user-verify'
 import UserInfo from './c-cpns/user-info'
 
 import { RootState } from '@/store'
+import { IUserInfo, IUserOptions } from '@/store/modules/user/types'
 
 const User = memo(() => {
-  const { userId } = useParams()
+  const { userId } = useParams() as { userId: string }
   const dispatch = useDispatch<any>()
   const { userInfo, options } = useSelector((state: RootState) => ({
     userInfo: state.user.userInfo,
@@ -23,7 +24,7 @@ const User = memo(() => {
   }))
 
   useEffect(() => {
-    dispatch(fetchUserInfoDataAction(userId ?? ''))
+    dispatch(fetchUserInfoDataAction(userId))
     dispatch(changeHeaderConfigAction({ isFixed: false, topAlpha: false }))
     dispatch(changeFooterConfigAction({ showFooter: false }))
   }, [userId])
@@ -32,8 +33,14 @@ const User = memo(() => {
     <UserWrapper>
       {!isEmptyO(userInfo) && (
         <>
-          <UserVerify userInfo={userInfo} options={options} />
-          <UserInfo userInfo={userInfo} options={options} />
+          <UserVerify
+            userInfo={userInfo as IUserInfo}
+            options={options as IUserOptions}
+          />
+          <UserInfo
+            userInfo={userInfo as IUserInfo}
+            options={options as IUserOptions}
+          />
         </>
       )}
     </UserWrapper>

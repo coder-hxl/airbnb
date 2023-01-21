@@ -12,7 +12,7 @@ const HomeSectionV2 = memo((props: IProps) => {
   const { infoData } = props
 
   const [activeIndex, setActiveIndex] = useState(0)
-  const tabNames = infoData?.list?.map((area) => area.name) ?? []
+  const tabNames = infoData.list.map((area) => area.name)
 
   const tabClickHandle = useCallback((index: number) => {
     setActiveIndex(index)
@@ -20,19 +20,16 @@ const HomeSectionV2 = memo((props: IProps) => {
 
   return (
     <HomeSectionV2Wrapper>
-      <SectionHeader
-        title={infoData.title ?? ''}
-        subTitle={infoData.subtitle}
-      />
+      <SectionHeader title={infoData.title} subTitle={infoData.subtitle} />
       <SectionTabs tabNames={tabNames} tabClickHandle={tabClickHandle} />
       <SectionRooms
-        roomList={infoData.list?.[activeIndex].rooms ?? []}
+        roomList={infoData.list?.[activeIndex].rooms}
         itemWidt="33.333%"
       />
       <SectionFooter
         name={tabNames[activeIndex]}
         areaName={tabNames[activeIndex]}
-        type={infoData.type ?? ''}
+        type={infoData.type}
       />
     </HomeSectionV2Wrapper>
   )

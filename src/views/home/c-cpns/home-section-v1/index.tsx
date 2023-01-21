@@ -12,15 +12,9 @@ const HomeSectionV1 = memo((props: IProps) => {
 
   return (
     <HomeSectionV1Wrapper>
-      <SectionHeader
-        title={infoData.title ?? ''}
-        subTitle={infoData.subtitle}
-      />
-      <SectionRooms roomList={infoData.areaRoom?.rooms ?? []} />
-      <SectionFooter
-        areaName={infoData.areaRoom?.name ?? ''}
-        type={infoData.type ?? ''}
-      />
+      <SectionHeader title={infoData.title} subTitle={infoData.subtitle} />
+      <SectionRooms roomList={infoData.areaRoom.rooms} />
+      <SectionFooter areaName={infoData.areaRoom.name} type={infoData.type} />
     </HomeSectionV1Wrapper>
   )
 })

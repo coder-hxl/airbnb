@@ -17,9 +17,10 @@ import RoomPictures from './c-cpns/room-pictures'
 import RoomInfos from './c-cpns/room-infos'
 
 import { RootState } from '@/store'
+import { IReview, IRoomInfo } from '@/store/modules/room/types'
 
 const Room = memo(() => {
-  const { roomId } = useParams()
+  const { roomId } = useParams() as { roomId: string }
   const { roomInfo, review } = useSelector(
     (state: RootState) => ({
       roomInfo: state.room.roomInfo,
@@ -30,7 +31,7 @@ const Room = memo(() => {
 
   const dispatch = useDispatch<any>()
   useEffect(() => {
-    dispatch(fetchRoomDataAction(roomId ?? ''))
+    dispatch(fetchRoomDataAction(roomId))
     dispatch(fetchReviewDataAction({ roomId: Number(roomId) }))
     dispatch(changeHeaderConfigAction({ isFixed: false, topAlpha: false }))
     dispatch(changeFooterConfigAction({ showFooter: true }))
@@ -39,10 +40,13 @@ const Room = memo(() => {
   return (
     <RoomWrapper>
       {!isEmptyO(roomInfo) && (
-        <RoomPictures pictures={roomInfo.pictureUrls ?? []} />
+        <RoomPictures pictures={roomInfo.pictureUrls as string[]} />
       )}
       {!isEmptyO({ ...roomInfo, ...review }) && (
-        <RoomInfos itemData={roomInfo} review={review} />
+        <RoomInfos
+          itemData={roomInfo as IRoomInfo}
+          review={review as IReview}
+        />
       )}
     </RoomWrapper>
   )

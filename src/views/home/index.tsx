@@ -15,6 +15,12 @@ import HomeSectionV2 from './c-cpns/home-section-v2'
 import HomeLongFor from './c-cpns/home-long-for'
 import HomeSectionV3 from './c-cpns/home-section-v3'
 
+import {
+  IHomeAreaV1,
+  IHomeAreaV2,
+  ILongForInfo
+} from '@/store/modules/home/types'
+
 const Home = memo(() => {
   // 获取state
   const {
@@ -49,13 +55,23 @@ const Home = memo(() => {
       <HomeBanner />
       <div className="content">
         {!isEmptyO(wonderfulPlaceInfo) && (
-          <HomeSectionV2 infoData={wonderfulPlaceInfo} />
+          <HomeSectionV2 infoData={wonderfulPlaceInfo as IHomeAreaV1} />
         )}
-        {!isEmptyO(hotPlaceInfo) && <HomeSectionV2 infoData={hotPlaceInfo} />}
-        {!isEmptyO(longForInfo) && <HomeLongFor infoData={longForInfo} />}
-        {!isEmptyO(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo} />}
-        {!isEmptyO(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} />}
-        {!isEmptyO(plusInfo) && <HomeSectionV3 infoData={plusInfo} />}
+        {!isEmptyO(hotPlaceInfo) && (
+          <HomeSectionV2 infoData={hotPlaceInfo as IHomeAreaV1} />
+        )}
+        {!isEmptyO(longForInfo) && (
+          <HomeLongFor infoData={longForInfo as ILongForInfo} />
+        )}
+        {!isEmptyO(highScoreInfo) && (
+          <HomeSectionV1 infoData={highScoreInfo as IHomeAreaV2} />
+        )}
+        {!isEmptyO(goodPriceInfo) && (
+          <HomeSectionV1 infoData={goodPriceInfo as IHomeAreaV2} />
+        )}
+        {!isEmptyO(plusInfo) && (
+          <HomeSectionV3 infoData={plusInfo as IHomeAreaV2} />
+        )}
       </div>
     </HomeWrapper>
   )

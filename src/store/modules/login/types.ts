@@ -1,6 +1,7 @@
+import { IMapTypeEmptyObject } from '@/types/common'
 import { IUserInfo } from '../user/types'
 
 export interface ILoginState {
-  token: string | undefined
-  userInfo: IUserInfo
+  token: string
+  userInfo: IMapTypeEmptyObject<IUserInfo>
 }

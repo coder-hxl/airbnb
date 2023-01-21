@@ -9,16 +9,17 @@ import UserInfoWrapper from './style'
 
 import IProps from './types'
 import { IUserInfo } from '@/store/modules/user/types'
+import { IUserUpdateData } from '@/services/modules/user'
 
 const UserInfo = memo((props: IProps) => {
   const { userInfo, options } = props
   const dispatch = useDispatch<any>()
   const [isEditInfo, setIsEditInfo] = useState(false)
 
-  const initFormData: IUserInfo = formConfig.reduce((pre, value) => {
+  const initFormData = formConfig.reduce((pre, value) => {
     const name = value.name as keyof IUserInfo
     return { ...pre, [name]: userInfo[name] }
-  }, {})
+  }, {}) as IUserUpdateData
   const [formData, setFormData] = useState(initFormData)
 
   const handleFormChange = useCallback((newForm: IUserInfo) => {
@@ -26,7 +27,7 @@ const UserInfo = memo((props: IProps) => {
   }, [])
 
   function handleFormSava() {
-    const userId = userInfo.id ?? 0
+    const userId = userInfo.id
     dispatch(updateUserInfoDataAction({ userId, formData }))
     setIsEditInfo(false)
   }

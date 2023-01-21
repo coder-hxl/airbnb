@@ -8,7 +8,7 @@ import localCache from '@/utils/cache'
 
 import { IAction } from '@/store/types'
 import { ILoginState } from './types'
-import { IAnyObject } from '@/types/common'
+import { IAnyObject, IMapTypeEmptyObject } from '@/types/common'
 import { IUserInfo } from '../user/types'
 
 export const fetchLoginDataAction = createAsyncThunk(
@@ -70,11 +70,14 @@ const loginSlice = createSlice({
   name: 'login',
   initialState,
   reducers: {
-    changeTokenAction(state, { payload }: IAction<string | undefined>) {
+    changeTokenAction(state, { payload }: IAction<string>) {
       localCache.setCache('token', payload)
       state.token = payload
     },
-    changeLoginUserInfoAction(state, { payload }: IAction<IUserInfo>) {
+    changeLoginUserInfoAction(
+      state,
+      { payload }: IAction<IMapTypeEmptyObject<IUserInfo>>
+    ) {
       localCache.setCache('userInfo', payload)
       state.userInfo = payload
     }

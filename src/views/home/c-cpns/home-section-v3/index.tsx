@@ -13,14 +13,11 @@ const HomeSectionV3 = memo((props: IProps) => {
 
   return (
     <HomeSectionV3Wrapper>
-      <SectionHeader
-        title={infoData.title ?? ''}
-        subTitle={infoData.subtitle}
-      />
+      <SectionHeader title={infoData.title} subTitle={infoData.subtitle} />
 
       <div className="plus-list">
         <ScrollView showShade={false}>
-          {infoData.areaRoom?.rooms?.map((item) => {
+          {infoData.areaRoom.rooms.map((item) => {
             return <RoomItem key={item.id} itemData={item} itemWidth="20%" />
           })}
         </ScrollView>
@@ -28,8 +25,8 @@ const HomeSectionV3 = memo((props: IProps) => {
 
       <SectionFooter
         name="plus"
-        areaName={infoData.areaRoom?.name ?? ''}
-        type={infoData.type ?? ''}
+        areaName={infoData.areaRoom.name}
+        type={infoData.type}
       />
     </HomeSectionV3Wrapper>
   )

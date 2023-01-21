@@ -4,12 +4,14 @@ import { getReviewData, getRoomData } from '@/services/modules/room'
 
 import { IAction } from '@/store/types'
 import { IState, IRoomInfo, IReview } from './types'
+import { IMapTypeEmptyObject } from '@/types/common'
 
 export const fetchRoomDataAction = createAsyncThunk(
   'fetchRoomInfoData',
   (roomId: string, { dispatch }) => {
     // 把旧的清除掉
     dispatch(changeRoomInfoAction({}))
+    dispatch(changeReviewAction({}))
 
     getRoomData(roomId).then((res) => {
       dispatch(changeRoomInfoAction(res))
@@ -37,11 +39,17 @@ const roomSlice = createSlice({
   name: 'room',
   initialState,
   reducers: {
-    changeRoomInfoAction(state, { payload }: IAction<IRoomInfo>) {
+    changeRoomInfoAction(
+      state,
+      { payload }: IAction<IMapTypeEmptyObject<IRoomInfo>>
+    ) {
       state.roomInfo = payload
     },
 
-    changeReviewAction(state, { payload }: IAction<IReview>) {
+    changeReviewAction(
+      state,
+      { payload }: IAction<IMapTypeEmptyObject<IReview>>
+    ) {
       state.review = payload
     }
   }

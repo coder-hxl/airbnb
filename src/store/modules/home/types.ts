@@ -1,10 +1,12 @@
+import { IMapTypeEmptyObject } from '@/types/common'
+
 export interface IHomeState {
-  goodPriceInfo: IHomeAreaV2
-  highScoreInfo: IHomeAreaV2
-  hotPlaceInfo: IHomeAreaV1
-  wonderfulPlaceInfo: IHomeAreaV1
-  longForInfo: ILongForInfo
-  plusInfo: IHomeAreaV2
+  goodPriceInfo: IMapTypeEmptyObject<IHomeAreaV2>
+  highScoreInfo: IMapTypeEmptyObject<IHomeAreaV2>
+  hotPlaceInfo: IMapTypeEmptyObject<IHomeAreaV1>
+  wonderfulPlaceInfo: IMapTypeEmptyObject<IHomeAreaV1>
+  longForInfo: IMapTypeEmptyObject<ILongForInfo>
+  plusInfo: IMapTypeEmptyObject<IHomeAreaV2>
 }
 
 export interface IHomeRoom {
@@ -28,24 +30,24 @@ export interface IAreaRoom {
 }
 
 export interface IHomeAreaV1 {
-  title?: string
-  subtitle?: string | null
-  type?: string
-  list?: IAreaRoom[]
+  title: string
+  subtitle: string | null
+  type: string
+  list: IAreaRoom[]
 }
 
 export interface IHomeAreaV2 {
-  title?: string
-  subtitle?: string | null
-  type?: string
-  areaRoom?: IAreaRoom
+  title: string
+  subtitle: string | null
+  type: string
+  areaRoom: IAreaRoom
 }
 
 export interface ILongForInfo {
-  title?: string
-  subtitle?: string
-  type?: string
-  list?: {
+  title: string
+  subtitle: string
+  type: string
+  list: {
     id: number
     city: string
     price: string

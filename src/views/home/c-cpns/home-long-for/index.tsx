@@ -12,14 +12,11 @@ const HomeLongFor = memo((props: IProps) => {
 
   return (
     <HomeLongForWrapper>
-      <SectionHeader
-        title={infoData.title ?? ''}
-        subTitle={infoData.subtitle}
-      />
+      <SectionHeader title={infoData.title} subTitle={infoData.subtitle} />
 
       <div className="long-for-list">
         <ScrollView showShade={false}>
-          {infoData.list?.map((item) => {
+          {infoData.list.map((item) => {
             return <LongForItem key={item.city} itemData={item} />
           })}
         </ScrollView>

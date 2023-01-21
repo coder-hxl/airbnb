@@ -14,12 +14,12 @@ import AreaRooms from './c-cpn/area-rooms'
 
 const Area = memo(() => {
   const dispatch = useDispatch<any>()
-  const { areaName } = useParams()
+  const { areaName } = useParams() as { areaName: string }
   const [searchParams] = useSearchParams()
   const query = Object.fromEntries(searchParams)
 
   useEffect(() => {
-    dispatch(fetchAreaDataAction(areaName ?? '', query.type))
+    dispatch(fetchAreaDataAction(areaName, query.type))
     dispatch(changeHeaderConfigAction({ isFixed: true, topAlpha: false }))
     dispatch(changeFooterConfigAction({ showFooter: false }))
   }, [dispatch, areaName, query.type])
@@ -28,7 +28,7 @@ const Area = memo(() => {
     <AreaWrapper>
       <AreaFilter />
       <AreaRooms />
-      <AreaPagination areaName={areaName ?? ''} type={query.type} />
+      <AreaPagination areaName={areaName} type={query.type} />
     </AreaWrapper>
   )
 })
