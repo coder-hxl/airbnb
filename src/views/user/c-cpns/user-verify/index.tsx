@@ -49,7 +49,7 @@ const UserVerify = memo((props: IProps) => {
       const { response } = info.file
 
       // 更新用户信息
-      if (response.code === 200) {
+      if (response?.code === 200) {
         dispatch(
           openFeedbackAction({ type: 'success', content: '更新图片成功~' })
         )
