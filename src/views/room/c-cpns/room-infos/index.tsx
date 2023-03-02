@@ -13,7 +13,7 @@ const RoomInfos = memo((props: IProps) => {
   const { itemData, review } = props
 
   const reviewListRef = useRef<HTMLDivElement>({} as HTMLDivElement)
-  const pageCount = Math.ceil(review.reviewCount / 8)
+  const pageCount = review?.reviewCount ? Math.ceil(review.reviewCount / 8) : 1
 
   const dispatch = useDispatch<any>()
   const paginationChangeHandle = useCallback(
@@ -40,7 +40,7 @@ const RoomInfos = memo((props: IProps) => {
           </div>
           <div className="name">{itemData.name}</div>
           <div className="address">{itemData.address}</div>
-          <div className="bed-type">{itemData.bedTypes.join(' · ')}</div>
+          <div className="bed-type">{itemData?.bedTypes?.join(' · ')}</div>
           <span className="star-info">
             {review.starRating}分 · {review.reviewCount}条评论
           </span>
@@ -49,13 +49,13 @@ const RoomInfos = memo((props: IProps) => {
         <div className="landlord area">
           <div className="landlord">
             <div className="avatar">
-              {itemData.landlord.avatarUrl ? (
+              {itemData?.landlord?.avatarUrl ? (
                 <img src={itemData.landlord.avatarUrl} alt="" />
               ) : (
                 <IconAvatar />
               )}
             </div>
-            <div className="name">房东: {itemData.landlord.name}</div>
+            <div className="name">房东: {itemData?.landlord?.name}</div>
           </div>
           <div className="introduction">
             <span className="triangle"></span>
@@ -78,7 +78,7 @@ const RoomInfos = memo((props: IProps) => {
           </div>
         </div>
         <div className="list" ref={reviewListRef}>
-          {review.list.map((item) => {
+          {review?.list?.map((item) => {
             return (
               <div className="item" key={item.id}>
                 <div className="user-info">

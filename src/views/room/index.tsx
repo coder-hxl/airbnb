@@ -17,7 +17,6 @@ import RoomPictures from './c-cpns/room-pictures'
 import RoomInfos from './c-cpns/room-infos'
 
 import { RootState } from '@/store'
-import { IReview, IRoomInfo } from '@/store/modules/room/types'
 
 const Room = memo(() => {
   const { roomId } = useParams() as { roomId: string }
@@ -43,10 +42,7 @@ const Room = memo(() => {
         <RoomPictures pictures={roomInfo.pictureUrls as string[]} />
       )}
       {!isEmptyO({ ...roomInfo, ...review }) && (
-        <RoomInfos
-          itemData={roomInfo as IRoomInfo}
-          review={review as IReview}
-        />
+        <RoomInfos itemData={roomInfo} review={review} />
       )}
     </RoomWrapper>
   )
