@@ -1,6 +1,6 @@
 # Airbnb
 
-Airbnb 是一个高仿 Airbnb 房源网，拥有房源搜索、地区房源、更多地区房源、房源详情、个人信息。
+Airbnb 是基于 React、TypeScript、React Router、Redux Tookit、Styled Components、Ant Design、 Material UI 等技术实现的高仿 Airbnb 房源网，拥有房源搜索、地区房源、更多地区房源、房源详情、个人信息。
 
 > 如果对您有帮助，可以给 [Airbnb 存储库](https://github.com/coder-hxl/airbnb) 点个 star 支持一下！
 
@@ -21,7 +21,7 @@ Airbnb 是一个高仿 Airbnb 房源网，拥有房源搜索、地区房源、�
 
 ## 介绍
 
-只对核心部分讲解。组件具体实现需要到对应的文件查看。
+进行模糊讲解，具体实现方式需到对应的源文件查看。
 
 ### 组件
 
@@ -71,14 +71,13 @@ Airbnb 是一个高仿 Airbnb 房源网，拥有房源搜索、地区房源、�
   - 热门目的地：请求 `/api/home/hotplace` 。使用 HomeSectionV2 组件展示房源数据。
   - 你可能想去：请求 `/api/home/longfor` 。使用 HomeLongFor 组件展示地区数据。
   - 高分好评：请求 `/api/home/highscore` 。使用 HomeSectionV1 组件展示房源数据。
-  - 高性价比：请求 `/api/home/goodprice` 。使用 HomeSectionV1 组件展示房源数据。	
-  - plus房源：请求 `/api/home/plus` 。使用 HomeSectionV3 组件展示房源数据。
+  - 高性价比：请求 `/api/home/goodprice` 。使用 HomeSectionV1 组件展示房源数据。
+  - plus 房源：请求 `/api/home/plus` 。使用 HomeSectionV3 组件展示房源数据。
 - 子组件
   - HomeSectionV1：内部使用 RoomItem 组件展示房间数据。
   - HomeSectionV2：内部使用 ScrollView 组件对 Tab 栏数据进行展示，使用 RoomItem 组件展示房间数据。
   - HomeSectionV3：内部使用 ScrollView 组件对 RoomItem 组件进行展示。
   - HomeLongFor：内部使用 ScrollView 组件对地区数据进行展示。
-
 
 ##### Area
 
@@ -102,10 +101,8 @@ Airbnb 是一个高仿 Airbnb 房源网，拥有房源搜索、地区房源、�
 - 数据来源：派发 Action (根据用户 id 发起网络请求将 User 数据存入 Store 的 User State 中)，并从 Store 的 Home State 获取数据。
 - 内容：
   - Header：修改 Header 组件，派发 Action 将 Store 的 Main State 的 fixed 和 alpha 设置为 false。
-  - 侧边栏：请求 `/api/user/:userId` 。展示用户头像等，使用  Ant Design 进行更新头像和裁剪头像。
+  - 侧边栏：请求 `/api/user/:userId` 。展示用户头像等，使用 Ant Design 进行更新头像和裁剪头像。
   - 信息：请求 `/api/user/:userId` 。展示用户信息，更新信息功能。
-
-**更多请查看 src/views**
 
 ## API 文档
 
